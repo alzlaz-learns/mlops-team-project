@@ -1,9 +1,9 @@
 # Project Title
 
 ## 1. Team Information
-- [ ] Team Name:
-- [ ] Team Members (Name & Email):
-- [ ] Course & Section:
+- [ ] Team Name: Triple A
+- [ ] Team Members (Name & Email): Annie Xu, axu7@depaul.edu
+- [ ] Course & Section: SE489 ML ENGINEERING FOR PRODUCTION (MLOPS)
 
 ## 2. Project Overview
 - [ ] Brief summary of the project (2-3 sentences)
