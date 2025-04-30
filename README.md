@@ -1,9 +1,9 @@
-# Project Title
+# Diabetes Predictor
 
 ## 1. Team Information
-- [ ] Team Name: Triple A
-- [ ] Team Members (Name & Email): Annie Xu, axu7@depaul.edu
-- [ ] Course & Section: SE489 ML ENGINEERING FOR PRODUCTION (MLOPS)
+- [x] Team Name: Triple A
+- [ ] Team Members (Name & Email): Annie Xu, axu7@depaul.edu, Alexander Lazarov alazarov@depaul.edu
+- [x] Course & Section: SE489 ML ENGINEERING FOR PRODUCTION (MLOPS)
 
 ## 2. Project Overview
 - [ ] Brief summary of the project (2-3 sentences)
@@ -20,6 +20,8 @@
 
 ## 5. Setup Instructions
 - [ ] How to set up the environment (conda/pip, requirements.txt, Docker, etc.)
+    -- conda - to import environment in conda from environment.yml use command bellow.
+    conda env export --from-history | findstr -v "prefix" > environment.yml
 - [ ] How to run the code and reproduce results
 
 ## 6. Contribution Summary

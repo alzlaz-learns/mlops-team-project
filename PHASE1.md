@@ -20,11 +20,15 @@
 
 ## 2. Code Organization & Setup
 - [ ] **2.1 Repository Setup**
-  - [ ] GitHub repo created
-  - [ ] Cookiecutter or similar structure used
+  - [x] GitHub repo created
+    https://github.com/alzlaz-learns/mlops-team-project
+  - [x] Cookiecutter or similar structure used
+    Cookiecutter: https://github.com/Alizadeh-DePaul/cookiecutter-mlops
 - [ ] **2.2 Environment Setup**
-  - [ ] Python virtual environment
-  - [ ] requirements.txt or environment.yml
+  - [x] Python virtual environment
+    conda
+  - [x] requirements.txt or environment.yml
+    environment.yml
   - [ ] (Optional) Google Colab setup
 
 ## 3. Version Control & Collaboration
