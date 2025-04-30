@@ -20,8 +20,10 @@
 
 ## 5. Setup Instructions
 - [ ] How to set up the environment (conda/pip, requirements.txt, Docker, etc.)
-    -- conda - to import environment in conda from environment.yml use command bellow.
-    conda env export --from-history | findstr -v "prefix" > environment.yml
+    * to create environment in conda from environment.yml use command bellow.
+    * conda env create -f environment.yml
+    * to freeze without system prefix use command bellow.
+    * conda env export --from-history | findstr -v "prefix" > environment.yml
 - [ ] How to run the code and reproduce results
 
 ## 6. Contribution Summary
