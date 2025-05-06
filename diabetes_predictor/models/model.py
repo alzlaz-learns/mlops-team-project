@@ -15,6 +15,7 @@ class RandomForestTrainer:
 
     def train(self, X_train, y_train):
         print("Training RandomForest model...")
+        print(f"Training RandomForest on {X_train.shape[0]} samples with {X_train.shape[1]} features...")
         self.model.fit(X_train, y_train)
 
     def evaluate(self, X_test, y_test):
