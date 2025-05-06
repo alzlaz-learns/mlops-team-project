@@ -1,11 +1,12 @@
 from pathlib import Path
+from typing import Optional, Union
 
 import joblib
 import pandas as pd
 
 
 class DiabetesPredictor:
-    def __init__(self, model_path: str = None):
+    def __init__(self, model_path: Optional[Union[str, Path]] = None):
         if model_path is None:
             # Relative to project root
             model_path = Path("models/random_forest_diabetes.pkl")

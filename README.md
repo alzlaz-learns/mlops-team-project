@@ -30,7 +30,7 @@
     * train:
     *   python -m diabetes_predictor.train_model
     * predict:
-    *    python -m diabetes_predictor.predict_model
+    *   python -m diabetes_predictor.predict_model
 
 ## 6. Contribution Summary
 - [ ] Briefly describe each team member's contributions

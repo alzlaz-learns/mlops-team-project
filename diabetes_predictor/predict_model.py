@@ -3,7 +3,7 @@ import pandas as pd
 from diabetes_predictor.models.predict import DiabetesPredictor
 
 
-def main():
+def main() -> None:
     input_data = pd.DataFrame([{
         "Pregnancies": 3,
         "Glucose": 120,
