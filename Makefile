@@ -30,10 +30,6 @@ requirements:
 dev_requirements: requirements
 	$(PYTHON_INTERPRETER) -m pip install .["dev"]
 
-## Delete all compiled Python files
-clean:
-	find . -type f -name "*.py[co]" -delete
-	find . -type d -name "__pycache__" -delete
 
 
 #################################################################################
@@ -41,8 +37,31 @@ clean:
 #################################################################################
 
 ## Process raw data into processed data
+# Run data preprocessing script
 data:
-	python $(PROJECT_NAME)/data/make_dataset.py
+	python -m diabetes_predictor.data.make_dataset --input data/raw/diabetes.arff
+
+# Train the model
+train:
+	python -m diabetes_predictor.train_model
+
+# Evaluate the model (if separate from train)
+evaluate:
+	python -m diabetes_predictor.predict_model
+
+# Remove Python cache and temp files
+clean:
+	find . -type f -name "*.py[co]" -delete
+	find . -type f -name "*.pyc" -delete
+	find . -type d -name "__pycache__" -exec rm -r {} +
+
+# Lint with Ruff
+lint:
+	ruff check . --fix
+
+# Type check with MyPy
+typecheck:
+	mypy diabetes_predictor/
 
 #################################################################################
 # Documentation RULES                                                           #
