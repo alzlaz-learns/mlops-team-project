@@ -54,9 +54,15 @@
 
 ## 6. Documentation & Reporting
 - [ ] **6.1 Project README**
-  - [ ] Overview, setup, replication steps, dependencies, team contributions
+- [ ] Overview, setup, replication steps, dependencies, team contributions
 - [ ] **6.2 Code Documentation**
-  - [ ] Docstrings, inline comments, code style (ruff), type checking (mypy), Makefile docs
+- [x] Docstrings, inline comments, code style (ruff), type checking (mypy), Makefile docs
+  * run mypy:
+  *   mypy diabetes_predictor/
+  * run ruff:
+  *   ruff check . 
+  * fix with ruff:
+  *   ruff check . --fix 
 
 ---
 
