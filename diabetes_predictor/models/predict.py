@@ -1,0 +1,20 @@
+import pandas as pd
+import joblib
+from pathlib import Path
+
+class DiabetesPredictor:
+    def __init__(self, model_path: str = None):
+        if model_path is None:
+            # Relative to project root
+            model_path = Path("models/random_forest_diabetes.pkl")
+        else:
+            model_path = Path(model_path)
+
+        if not model_path.exists():
+            raise FileNotFoundError(f"Model file not found at: {model_path}")
+
+        self.model = joblib.load(model_path)
+        
+    def predict(self, input_df: pd.DataFrame) -> str:
+        prediction = self.model.predict(input_df)[0]
+        return "Diabetic" if int(prediction) == 1 else "Non-Diabetic"
