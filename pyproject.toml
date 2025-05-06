@@ -25,3 +25,9 @@ dev = {file = ['requirements_dev.txt']}
 
 [tool.ruff]
 line-length = 120
+exclude = ["venv", ".venv", "build", "dist"]
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+

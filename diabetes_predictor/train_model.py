@@ -1,8 +1,10 @@
 # diabetes_predictor/train_model.py
 
+from sklearn.model_selection import train_test_split
+
 from diabetes_predictor.data.make_dataset import load_arff_data
 from diabetes_predictor.models.model import RandomForestTrainer
-from sklearn.model_selection import train_test_split
+
 
 def main():
     df = load_arff_data("data/raw/diabetes.arff")

@@ -1,5 +1,6 @@
 import torch
 
+
 def predict(
     model: torch.nn.Module,
     dataloader: torch.utils.data.DataLoader

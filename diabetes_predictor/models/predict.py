@@ -1,6 +1,8 @@
-import pandas as pd
-import joblib
 from pathlib import Path
+
+import joblib
+import pandas as pd
+
 
 class DiabetesPredictor:
     def __init__(self, model_path: str = None):

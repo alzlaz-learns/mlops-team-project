@@ -1,5 +1,7 @@
-from diabetes_predictor.models.predict import DiabetesPredictor
 import pandas as pd
+
+from diabetes_predictor.models.predict import DiabetesPredictor
+
 
 def main():
     input_data = pd.DataFrame([{

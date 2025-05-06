@@ -1,6 +1,8 @@
+from pathlib import Path
+
 import pandas as pd
 from scipy.io import arff
-from pathlib import Path
+
 
 # called by train_model.
 def load_arff_data(filepath: str | Path) -> pd.DataFrame:

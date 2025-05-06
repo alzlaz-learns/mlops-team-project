@@ -1,8 +1,9 @@
 # src/predict_model.py
 
-import pandas as pd
-import joblib
 import os
+
+import joblib
+import pandas as pd
 
 # Load trained model
 model_path = r"C:\Users\aleks\mlops-team-project\models\random_forest_diabetes.pkl"

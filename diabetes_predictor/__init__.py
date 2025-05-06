@@ -1,1 +1,1 @@
-from diabetes_predictor.models.model import RandomForestTrainer
+

@@ -1,12 +1,13 @@
 # src/train_model.py
 
+import os
+
+import joblib
 import pandas as pd
 from scipy.io import arff
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
-import joblib
-import os
+from sklearn.model_selection import train_test_split
 
 # ?? Full path to your dataset
 dataset_path = r"C:\Users\aleks\mlops-team-project\data\raw\diabetes.arff"

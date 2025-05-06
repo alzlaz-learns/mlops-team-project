@@ -1,7 +1,9 @@
 import os
+
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
+
 
 class RandomForestTrainer:
     def __init__(self, model_output_path: str = "models/random_forest_diabetes.pkl", 
