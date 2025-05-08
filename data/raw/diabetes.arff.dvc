@@ -1,0 +1,5 @@
+outs:
+- md5: c938f67549dffe7fe96993389669bf36
+  size: 24077
+  hash: md5
+  path: diabetes.arff

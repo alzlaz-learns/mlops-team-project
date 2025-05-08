@@ -1,0 +1,5 @@
+outs:
+- md5: 4c4159ac61e916ed9b721e950b5650d1
+  size: 621449
+  hash: md5
+  path: random_forest_diabetes.pkl
