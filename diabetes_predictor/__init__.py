@@ -1,2 +1,1 @@
-from diabetes_predictor.models.model import MyNeuralNet
-from diabetes_predictor.predict_model import predict
+

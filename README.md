@@ -19,12 +19,18 @@
 - [ ] [PHASE3.md](./PHASE3.md): Continuous ML & Deployment
 
 ## 5. Setup Instructions
-- [ ] How to set up the environment (conda/pip, requirements.txt, Docker, etc.)
-    * to create environment in conda from environment.yml use command bellow.
-    * conda env create -f environment.yml
-    * to freeze without system prefix use command bellow.
-    * conda env export --from-history | findstr -v "prefix" > environment.yml
-- [ ] How to run the code and reproduce results
+- [x] How to set up the environment (conda/pip, requirements.txt, Docker, etc.)
+    * to create environment in conda from environment.yml:
+    *   conda env create -f environment.yml
+
+    * to freeze without system prefix:
+    *   conda env export --from-history | findstr -v "prefix" > environment.yml
+    
+- [x] How to run the code and reproduce results
+    * train:
+    *   python -m diabetes_predictor.train_model
+    * predict:
+    *   python -m diabetes_predictor.predict_model
 
 ## 6. Contribution Summary
 - [ ] Briefly describe each team member's contributions
