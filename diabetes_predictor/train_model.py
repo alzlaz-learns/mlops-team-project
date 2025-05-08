@@ -2,12 +2,14 @@
 
 from sklearn.model_selection import train_test_split
 
-from diabetes_predictor.data.make_dataset import load_arff_data
+from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from diabetes_predictor.models.model import RandomForestTrainer
 
 
 def main() -> None:
     df = load_arff_data("data/raw/diabetes.arff")
+    df = preprocess_data(df)
+    
     X = df.drop("Outcome", axis=1)
     y = df["Outcome"].astype(int)
 
