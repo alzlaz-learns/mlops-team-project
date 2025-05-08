@@ -182,7 +182,5 @@ models/*.pkl
 # Ignore DVC-tracked data files
 /data/raw/diabetes.arff
 
-.dvc/config
-
 src/client_secrets.json
 src/drive_auth_debug.py

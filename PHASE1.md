@@ -67,14 +67,14 @@
 
 ## 4. Data Handling
 - [x] **4.1 Data Preparation**
-  - [x] Cleaning, normalization, augmentation scripts
+- [x] Cleaning, normalization, augmentation scripts
   Included in make_dataset.py and train_model.py
 - [x] **4.2 Data Documentation**
-  - [x] Description of data prep process
+- [x] Description of data prep process
   Loaded the ARFF file, converted the resulting record array into a pandas DataFrame, and decoded any byte-strings back into Python str. 
   Separated out the “class” column into y and retained the remaining eight columns as feature matrix X.
   Performed a stratified 80/20 train/test split to preserve the original positive/negative class ratio.
-
+  
 ## 5. Model Training
 - [x] **5.1 Training Infrastructure**
   - [x] Training environment setup (e.g., Colab, GPU)
