@@ -178,3 +178,6 @@ cython_debug/
 
 # Ignore trained model files
 models/*.pkl
+
+# Ignore DVC-tracked data files
+/data/raw/diabetes.arff
