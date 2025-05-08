@@ -39,6 +39,7 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     * install: pip install "dvc[gdrive]"
     dvc remote modify gdrive_remote gdrive_client_id <client-id> --local
     dvc remote modify gdrive_remote gdrive_client_secret <client-secret> --local
+    dvc pull
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
 Annie: Writing portion of README/Phase1.md
