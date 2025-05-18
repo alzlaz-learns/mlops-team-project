@@ -1,17 +1,19 @@
-# Base image
-FROM python:3.11-slim
+FROM python:3.11-slim-bullseye AS trainer
 
-RUN apt update && \
-    apt install --no-install-recommends -y build-essential gcc && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace
 
-COPY requirements.txt requirements.txt
-COPY pyproject.toml pyproject.toml
+COPY requirements.txt pyproject.toml ./
 COPY diabetes_predictor/ diabetes_predictor/
-COPY data/ data/
+COPY .dvc .dvc
+COPY data/raw/*.dvc data/raw/
 
-WORKDIR /
-RUN pip install -r requirements.txt --no-cache-dir
-RUN pip install . --no-deps --no-cache-dir
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential gcc && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install . --no-deps --no-cache-dir && \
+    pip install --no-cache-dir "dvc[gdrive]" && \
+    rm -rf /root/.cache && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["python", "-u", "diabetes_predictor/train_model.py"]
+ENTRYPOINT ["bash", "-c", "cd /workspace && dvc pull --force && exec python -u -m diabetes_predictor.train_model"]
+

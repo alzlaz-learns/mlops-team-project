@@ -179,10 +179,10 @@ cython_debug/
 # Ignore trained model files
 models/*.pkl
 
-# Ignore DVC-tracked data files
+# # Ignore DVC-tracked data files
 /data/raw/diabetes.arff
 
-src/client_secrets.json
+client_secrets.json
 src/drive_auth_debug.py
 
 # Ignore Hydra logs
