@@ -26,6 +26,10 @@
   Loaded the ARFF file, converted the resulting record array into a pandas DataFrame, and decoded any byte-strings back into Python str. 
   Separated out the “class” column into y and retained the remaining eight columns as feature matrix X.
   Performed a stratified 80/20 train/test split to preserve the original positive/negative class ratio.
+  - Replace placeholders or missing values with NaN
+  - Drop rows with missing values
+  - Convert all values to numeric
+  - Normalize features (mean=0, std=1)
 - [x] **1.3 Model Considerations**
   - [x] Model architecture(s) considered
   Random Forest model: This model builds many decision trees on different random subsets of the data and features, and then aggregates their predictions for the final classification. 
