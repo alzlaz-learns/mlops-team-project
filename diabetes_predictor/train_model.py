@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 
 from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from diabetes_predictor.models.model import RandomForestTrainer
-from diabetes_predictor.utils.logging_config import setup_logging, get_logger
+from diabetes_predictor.utils.logging_config import get_logger, setup_logging
 
 # Set up logging
 setup_logging()

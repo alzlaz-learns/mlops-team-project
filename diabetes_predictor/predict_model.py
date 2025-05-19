@@ -1,7 +1,7 @@
 import pandas as pd
 
 from diabetes_predictor.models.predict import DiabetesPredictor
-from diabetes_predictor.utils.logging_config import setup_logging, get_logger
+from diabetes_predictor.utils.logging_config import get_logger, setup_logging
 
 # Set up logging
 setup_logging()
