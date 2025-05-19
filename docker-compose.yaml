@@ -9,10 +9,7 @@ services:
     volumes:
       - ./models:/workspace/models
       - ./data:/workspace/data
-      - ./.dvc:/workspace/.dvc
-      - ./.git:/workspace/.git:ro
-      - dvc_cache:/root/.cache/dvc
-      - ./client_secrets.json:/workspace/client_secrets.json:ro
+      - ./configs:/workspace/configs
     working_dir: /workspace
 
   predict:
@@ -25,13 +22,6 @@ services:
     volumes:
       - ./models:/workspace/models
       - ./data:/workspace/data:ro
-      - ./.dvc:/workspace/.dvc
-      - ./.git:/workspace/.git:ro
-      - dvc_cache:/root/.cache/dvc:ro
-      - ./client_secrets.json:/workspace/client_secrets.json:ro
     ports:
       - "8000:8000"
     working_dir: /workspace
-
-volumes:
-  dvc_cache:
