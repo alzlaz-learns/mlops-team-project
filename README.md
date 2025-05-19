@@ -28,8 +28,6 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     *   conda env create -f environment.yml
     * to freeze without system prefix:
     *   conda env export --from-history | findstr -v "prefix" > environment.yml
-    
-    
 - [x] How to run the code and reproduce results
     * train:
     *   python -m diabetes_predictor.train_model
