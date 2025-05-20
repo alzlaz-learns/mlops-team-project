@@ -20,7 +20,11 @@
 
 ## 4. Experiment Management & Tracking
 - [ ] **4.1 Experiment Tracking Tools**
-  - [ ] MLflow, Weights & Biases, or similar integrated
+  - [x] MLflow, Weights & Biases, or similar integrated
+      * Experiment Tracking with MLflow
+      * We use MLflow to track experiments and manage model data
+      * install mlflow
+      *  pip install mlflow
   - [ ] Logging of metrics, parameters, and models
   - [ ] Instructions for visualizing and comparing runs
 

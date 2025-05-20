@@ -1,6 +1,9 @@
 # diabetes_predictor/train_model.py
 
 import hydra
+import mlflow
+import mlflow.sklearn
+
 from omegaconf import DictConfig
 from sklearn.model_selection import train_test_split
 
@@ -15,6 +18,19 @@ logger = get_logger(__name__)
 @hydra.main(config_path="../configs", config_name="config", version_base=None)
 def main(cfg: DictConfig) -> None:
     logger.info("Starting model training process")
+
+    # Set MLflow experiment name
+    mlflow.set_experiment("diabetes-prediction")
+
+    # Start MLflow run
+    with mlflow.start_run():
+        logger.info("MLflow run started")
+
+        # Log configuration parameters
+        mlflow.log_param("n_estimators", cfg.model.n_estimators)
+        mlflow.log_param("max_depth", cfg.model.max_depth)
+        mlflow.log_param("random_state", cfg.seed)
+        mlflow.log_param("test_size", cfg.data.test_size)
     
     logger.info("Loading and preprocessing data")
 
@@ -46,5 +62,12 @@ def main(cfg: DictConfig) -> None:
     model, accuracy = trainer.train_and_evaluate(X_train, X_test, y_train, y_test)
     logger.info(f"Model training completed. Final accuracy: {accuracy:.4f}")
 
+    # Log final accuracy to MLflow
+    mlflow.log_metric("accuracy", accuracy)
+
+    # Log the model to MLflow
+    mlflow.sklearn.log_model(model, "model")
+
+    logger.info("MLflow run completed")
 if __name__ == "__main__":
     main()
