@@ -35,20 +35,23 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     *   docker compose build trainer
     * build prediction service:
     *   docker compose build predict
+    * build mlflow ui service:
+    *   docker compose build mlflow-ui
     * run the trainier:
     *   docker compose run --rm trainer
     * run the predict:
     *    docker compose run --rm predict
+    * run the mlflow ui:
+    *   docker compose up mlflow-ui
 
-- [x] How to run the code and reproduce results
+- [x] How to run the code and reproduce results on local machine
     * train:
     *   python -m diabetes_predictor.train_model
     * predict:
     *   python -m diabetes_predictor.predict_model
 - [x] data pipeline with dvc
     * install: pip install "dvc[gdrive]"
-    * dvc remote modify gdrive_remote gdrive_client_id <client-id> --local
-    * dvc remote modify gdrive_remote gdrive_client_secret <client-secret> --local
+    * dvc remote modify gdrive_remote gdrive_service_account_json_file_path ../client_secrets.json --local
     * dvc pull
     
 ## 6. Contribution Summary
