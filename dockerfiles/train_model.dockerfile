@@ -1,17 +1,32 @@
-# Base image
-FROM python:3.11-slim
+# Stage 1: Builder
+FROM python:3.11-slim-bullseye AS trainer
 
-RUN apt update && \
-    apt install --no-install-recommends -y build-essential gcc && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace
 
-COPY requirements.txt requirements.txt
-COPY pyproject.toml pyproject.toml
+# Install build tools
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential gcc && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Copy dependency files and source code
+COPY requirements.txt pyproject.toml ./
+COPY diabetes_predictor/ diabetes_predictor/
+
+# Install dependencies
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install . --no-deps --no-cache-dir
+
+# Stage 2: Runtime
+FROM python:3.11-slim-bullseye
+
+WORKDIR /workspace
+
+# Copy installed packages from builder
+COPY --from=trainer /usr/local /usr/local
+
+# Copy application code and data
 COPY diabetes_predictor/ diabetes_predictor/
 COPY data/ data/
 
-WORKDIR /
-RUN pip install -r requirements.txt --no-cache-dir
-RUN pip install . --no-deps --no-cache-dir
-
-ENTRYPOINT ["python", "-u", "diabetes_predictor/train_model.py"]
+# Set entrypoint
+ENTRYPOINT ["python", "-u", "-m", "diabetes_predictor.train_model"]

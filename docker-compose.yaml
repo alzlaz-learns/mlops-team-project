@@ -1,12 +1,27 @@
-version: "3"
+version: "3.9"
+
 services:
   trainer:
-    image: trainer:latest
     build:
       context: .
       dockerfile: dockerfiles/train_model.dockerfile
+    image: diabetes_trainer:latest
+    volumes:
+      - ./models:/workspace/models
+      - ./data:/workspace/data
+      - ./configs:/workspace/configs
+    working_dir: /workspace
+
   predict:
-    image: predict:latest
     build:
       context: .
       dockerfile: dockerfiles/predict_model.dockerfile
+    image: diabetes_predict:latest
+    depends_on:
+      - trainer
+    volumes:
+      - ./models:/workspace/models
+      - ./data:/workspace/data:ro
+    ports:
+      - "8000:8000"
+    working_dir: /workspace

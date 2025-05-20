@@ -1,0 +1,6 @@
+defaults:
+  - model: random_forest
+  - data: diabetes_dataset
+
+experiment_name: diabetes_experiment
+seed: 42
