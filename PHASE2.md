@@ -24,9 +24,11 @@
       * Experiment Tracking with MLflow
       * We use MLflow to track experiments and manage model data
       * install mlflow
-      *  pip install mlflow
+      *   pip install mlflow
   - [ ] Logging of metrics, parameters, and models
   - [ ] Instructions for visualizing and comparing runs
+      * visualize outputs on local machine:
+          *   mlflow ui
 
 ## 5. Application & Experiment Logging
 - [ ] **5.1 Logging Setup**

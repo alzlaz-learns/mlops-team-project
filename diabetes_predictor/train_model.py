@@ -3,9 +3,13 @@
 import hydra
 import mlflow
 import mlflow.sklearn
+import pandas as pd
+import mlflow.models
+from mlflow.models.signature import infer_signature
 
 from omegaconf import DictConfig
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_score, recall_score
 
 from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from diabetes_predictor.models.model import RandomForestTrainer
@@ -27,10 +31,10 @@ def main(cfg: DictConfig) -> None:
         logger.info("MLflow run started")
 
         # Log configuration parameters
-        mlflow.log_param("n_estimators", cfg.model.n_estimators)
-        mlflow.log_param("max_depth", cfg.model.max_depth)
-        mlflow.log_param("random_state", cfg.seed)
-        mlflow.log_param("test_size", cfg.data.test_size)
+        mlflow.log_param("mflow - n_estimators", cfg.model.n_estimators)
+        mlflow.log_param("mflow - max_depth", cfg.model.max_depth)
+        mlflow.log_param("mflow - random_state", cfg.seed)
+        mlflow.log_param("mflow - test_size", cfg.data.test_size)
     
     logger.info("Loading and preprocessing data")
 
@@ -62,8 +66,28 @@ def main(cfg: DictConfig) -> None:
     model, accuracy = trainer.train_and_evaluate(X_train, X_test, y_train, y_test)
     logger.info(f"Model training completed. Final accuracy: {accuracy:.4f}")
 
+    # Make predictions to compute additional metrics
+    y_pred = model.predict(X_test)
+
+    # Prepare input example
+    input_example = X_test.iloc[:5]
+
+    # Infer model signature
+    signature = infer_signature(input_example, model.predict(input_example))
+
+    # Log the model with input example and signature
+    mlflow.sklearn.log_model(
+        model,
+        "model",
+        input_example=input_example,
+        signature=signature
+    )
+
+
     # Log final accuracy to MLflow
     mlflow.log_metric("accuracy", accuracy)
+    mlflow.log_metric("precision", precision_score(y_test, y_pred))
+    mlflow.log_metric("recall", recall_score(y_test, y_pred))
 
     # Log the model to MLflow
     mlflow.sklearn.log_model(model, "model")
