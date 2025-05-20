@@ -26,9 +26,13 @@
       * install mlflow
       *   pip install mlflow
   - [ ] Logging of metrics, parameters, and models
+  ![alt text](image.png)
   - [ ] Instructions for visualizing and comparing runs
       * visualize outputs on local machine:
           *   mlflow ui
+          *   open browser go to:
+          *     http://localhost:5000/
+          *     diabetes-prediction -> select run -> Model metrics for visualizations
 
 ## 5. Application & Experiment Logging
 - [ ] **5.1 Logging Setup**
