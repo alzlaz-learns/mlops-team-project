@@ -2,14 +2,12 @@
 
 import hydra
 import mlflow
-import mlflow.sklearn
-import pandas as pd
 import mlflow.models
+import mlflow.sklearn
 from mlflow.models.signature import infer_signature
-
 from omegaconf import DictConfig
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score
+from sklearn.model_selection import train_test_split
 
 from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from diabetes_predictor.models.model import RandomForestTrainer
