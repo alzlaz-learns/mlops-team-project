@@ -1,11 +1,11 @@
 # PHASE 2: Enhancing ML Operations with Containerization & Monitoring
 
 ## 1. Containerization
-- [ ] **1.1 Dockerfile**
-  - [ ] Dockerfile created and tested
-  - [ ] Instructions for building and running the container
-- [ ] **1.2 Environment Consistency**
-  - [ ] All dependencies included in the container
+- [x] **1.1 Dockerfile**
+  - [x] Dockerfile created and tested
+  - [x] Instructions for building and running the container
+- [x] **1.2 Environment Consistency**
+  - [x] All dependencies included in the container
 
 ## 2. Monitoring & Debugging
 
@@ -19,15 +19,16 @@
   - [ ] Profiling results and optimizations documented
 
 ## 4. Experiment Management & Tracking
-- [ ] **4.1 Experiment Tracking Tools**
+- [x] **4.1 Experiment Tracking Tools**
   - [x] MLflow, Weights & Biases, or similar integrated
       * Experiment Tracking with MLflow
       * We use MLflow to track experiments and manage model data
       * install mlflow
       *   pip install mlflow
-  - [ ] Logging of metrics, parameters, and models
-  ![alt text](image.png)
-  - [ ] Instructions for visualizing and comparing runs
+  - [x] Logging of metrics, parameters, and models
+      * ![alt text](image-1.png)
+      * ![alt text](image.png)
+  - [x] Instructions for visualizing and comparing runs
       * visualize outputs on local machine:
           *   mlflow ui
           *   open browser go to:

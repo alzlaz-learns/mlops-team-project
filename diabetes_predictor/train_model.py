@@ -84,14 +84,12 @@ def main(cfg: DictConfig) -> None:
         )
 
 
-        # Log final accuracy to MLflow
+        # Log metrics to mlflow
         mlflow.log_metric("accuracy", accuracy)
         mlflow.log_metric("precision", precision_score(y_test, y_pred))
         mlflow.log_metric("recall", recall_score(y_test, y_pred))
 
-        # Log the model to MLflow
-        mlflow.sklearn.log_model(model, "model")
-
+        
         logger.info("MLflow run completed")
 if __name__ == "__main__":
     main()
