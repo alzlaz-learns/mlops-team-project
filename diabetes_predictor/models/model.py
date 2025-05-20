@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 from diabetes_predictor.utils.logging_config import get_logger
-from diabetes_predictor.utils.profiling import profile_function, PerformanceTracker
+from diabetes_predictor.utils.profiling import PerformanceTracker, profile_function
 
 logger = get_logger(__name__)
 
@@ -29,6 +29,7 @@ class RandomForestTrainer:
         self.performance_tracker.start()
         self.model.fit(X_train, y_train)
         duration = self.performance_tracker.end()
+        self.performance_tracker.add_metric("training_duration_sec", duration)
         self.performance_tracker.add_metric("training_samples", X_train.shape[0])
         self.performance_tracker.add_metric("features", X_train.shape[1])
         logger.info("Model training completed")
@@ -39,6 +40,7 @@ class RandomForestTrainer:
         y_pred = self.model.predict(X_test)
         acc = accuracy_score(y_test, y_pred)
         duration = self.performance_tracker.end()
+        self.performance_tracker.add_metric("training_duration_sec", duration)
         self.performance_tracker.add_metric("accuracy", acc)
         self.performance_tracker.add_metric("test_samples", X_test.shape[0])
         logger.info(f"Model accuracy: {acc:.4f}")
@@ -51,6 +53,7 @@ class RandomForestTrainer:
         os.makedirs(os.path.dirname(self.model_output_path), exist_ok=True)
         joblib.dump(self.model, self.model_output_path)
         duration = self.performance_tracker.end()
+        self.performance_tracker.add_metric("training_duration_sec", duration)
         self.performance_tracker.add_metric("model_size_mb", os.path.getsize(self.model_output_path) / (1024 * 1024))
         logger.info("Model saved successfully")
 

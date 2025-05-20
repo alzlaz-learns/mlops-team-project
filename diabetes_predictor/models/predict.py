@@ -7,7 +7,7 @@ import pandas as pd
 
 from diabetes_predictor.data.make_dataset import preprocess_data
 from diabetes_predictor.utils.logging_config import get_logger
-from diabetes_predictor.utils.profiling import profile_function, PerformanceTracker
+from diabetes_predictor.utils.profiling import PerformanceTracker, profile_function
 
 logger = get_logger(__name__)
 
