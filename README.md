@@ -56,9 +56,9 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
-Annie: Writing portion of README/Phase1.md
-Aleksa: Researching model, writing code for implementing model
-Alex: Github project setup
+        Annie: Writing portion of README/Phase1.md
+        Aleksa: Researching model, writing code for implementing model
+        Alex: Github project setup
 
 ## 7. References
 - [x] List of datasets, frameworks, and major third-party tools used

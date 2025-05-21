@@ -1,10 +1,13 @@
 # diabetes_predictor/train_model.py
 
+import pdb
 import hydra
 import mlflow
 import mlflow.models
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
+import threading
+from monitoring.metrics_logger import run_metrics_server, update_metrics
 from omegaconf import DictConfig
 from sklearn.metrics import precision_score, recall_score
 from sklearn.model_selection import train_test_split
@@ -16,9 +19,11 @@ from diabetes_predictor.utils.logging_config import get_logger, setup_logging
 # Set up logging
 setup_logging()
 logger = get_logger(__name__)
+threading.Thread(target=run_metrics_server, daemon=True).start()  
 #set up hydra
 @hydra.main(config_path="../configs", config_name="config", version_base=None)
 def main(cfg: DictConfig) -> None:
+
     logger.info("Starting model training process")
 
     # Set MLflow experiment name
@@ -35,12 +40,21 @@ def main(cfg: DictConfig) -> None:
         mlflow.log_param("test_size", cfg.data.test_size)
     
         logger.info("Loading and preprocessing data")
+    
+
+        logger.info("Loading and preprocessing data")
 
         df = load_arff_data(cfg.data.input_path)
         df = preprocess_data(df)
 
         logger.info(f"Data loaded and preprocessed. Shape: {df.shape}")
         
+        X = df.drop(cfg.data.target_column, axis=1)
+        y = df[cfg.data.target_column].astype(int)
+        logger.info(f"Data loaded and preprocessed. Shape: {df.shape}")
+        pdb.set_trace()
+
+    
         X = df.drop(cfg.data.target_column, axis=1)
         y = df[cfg.data.target_column].astype(int)
 
@@ -89,5 +103,16 @@ def main(cfg: DictConfig) -> None:
 
         
         logger.info("MLflow run completed")
+        logger.info("Initializing RandomForest trainer")
+        trainer = RandomForestTrainer(
+            n_estimators=cfg.model.n_estimators,
+            max_depth=cfg.model.max_depth,
+            random_state=cfg.seed
+        )
+    
+        logger.info("Training and evaluating model")
+        model, accuracy = trainer.train_and_evaluate(X_train, X_test, y_train, y_test)
+        logger.info(f"Model training completed. Final accuracy: {accuracy:.4f}")
+        update_metrics(acc=accuracy, loss=0.0) 
 if __name__ == "__main__":
     main()

@@ -10,7 +10,8 @@
 ## 2. Monitoring & Debugging
 
 - [ ] **2.1 Debugging Practices**
-  - [ ] Debugging tools used (e.g., pdb)
+  - [x] Debugging tools used (e.g., pdb)
+    * pdb
   - [ ] Example debugging scenarios and solutions
 
 ## 3. Profiling & Optimization
