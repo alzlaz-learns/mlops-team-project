@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 # Copy dependency files and source code
 COPY requirements.txt pyproject.toml ./
 COPY diabetes_predictor/ diabetes_predictor/
+COPY monitoring/ monitoring/
 
 # Install dependencies
 RUN pip install --upgrade pip && \
@@ -27,6 +28,7 @@ COPY --from=trainer /usr/local /usr/local
 # Copy application code and data
 COPY diabetes_predictor/ diabetes_predictor/
 COPY data/ data/
+COPY monitoring/ monitoring/
 
 # Set entrypoint
 ENTRYPOINT ["python", "-u", "-m", "diabetes_predictor.train_model"]

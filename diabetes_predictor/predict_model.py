@@ -1,3 +1,4 @@
+# diabetes_predictor\predict_model.py
 import pandas as pd
 
 from diabetes_predictor.models.predict import DiabetesPredictor

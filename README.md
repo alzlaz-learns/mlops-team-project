@@ -19,7 +19,7 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
 
 ## 4. Phase Deliverables
 - [x] [PHASE1.md](./PHASE1.md): Project Design & Model Development
-- [x] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
+- [ ] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
 - [ ] [PHASE3.md](./PHASE3.md): Continuous ML & Deployment
 
 ## 5. Setup Instructions
@@ -35,38 +35,44 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     *   docker compose build trainer
     * build prediction service:
     *   docker compose build predict
+    * build mlflow ui service:
+    *   docker compose build mlflow-ui
     * run the trainier:
     *   docker compose run --rm trainer
     * run the predict:
     *    docker compose run --rm predict
+    * run the mlflow ui:
+    *   docker compose up mlflow-ui
+    * run pdb on trainer in docker with hydra flag
+    *   docker compose run --rm trainer debug=true
+    * cli custom configuration hydra
+    *   python -m diabetes_predictor.train_model model.n_estimators=<int> model.max_depth=<int>
 
-- [x] How to run the code and reproduce results
+- [x] How to run the code and reproduce results on local machine
     * train:
     *   python -m diabetes_predictor.train_model
     * predict:
     *   python -m diabetes_predictor.predict_model
 - [x] data pipeline with dvc
     * install: pip install "dvc[gdrive]"
-    dvc remote modify gdrive_remote gdrive_client_id <client-id> --local
-    dvc remote modify gdrive_remote gdrive_client_secret <client-secret> --local
-    dvc pull
+    * dvc remote modify gdrive_remote gdrive_service_account_json_file_path ../client_secrets.json --local
+    * dvc pull
+- [x] pdb run locally to test with pdb flag
+    train:
+        python -m diabetes_predictor.train_model debug=true
+        or in config.yanl can change debug: false -> debug: true
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
-Part 1: 
-Annie: Writing portion of README/Phase1.md
-Aleksa: Researching model, writing code for implementing model
-Alex: Github project setup
-Part2: 
-Annie: Logging, Profiling
-Aleksa: Debugging, Monitoring
-Alex: Docker, Hydra
+        Annie: Writing portion of README/Phase1.md, profiling & logging
+    *    Aleksa: Researching model, writing code for implementing model, debbuging
+    *    Alex: Github project setup monitoring & tracking & docker integration.
 
 ## 7. References
 - [x] List of datasets, frameworks, and major third-party tools used
-    - Diabetes dataset: https://www.openml.org/search?type=data&sort=runs&id=42608
-    - Framework: scikit-learn (RandomForestClassifier)
-    - Data: pandas, scipy
-    - Development tools: Ruff (linting/formatting), MyPy (static type checking)
+* Diabetes dataset: https://www.openml.org/search?type=data&sort=runs&id=42608
+* Framework: scikit-learn (RandomForestClassifier, train_test_split, accuracy_score, classification_report)
+* Data: pandas, scipy
+* Development tools: Ruff (linting/formatting), MyPy (static type checking)
 
 ---
 

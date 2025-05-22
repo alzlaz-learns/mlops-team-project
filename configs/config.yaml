@@ -4,3 +4,4 @@ defaults:
 
 experiment_name: diabetes_experiment
 seed: 42
+debug: false

@@ -1,6 +1,7 @@
 from prometheus_client import start_http_server, Gauge
 import psutil
 import time
+import logging
 
 # Define Prometheus metrics
 training_accuracy = Gauge('training_accuracy', 'Model Accuracy')
@@ -13,8 +14,12 @@ def update_metrics(acc=None, loss=None):
         training_accuracy.set(acc)
     if loss is not None:
         training_loss.set(loss)
-    cpu_usage.set(psutil.cpu_percent())
-    memory_usage.set(psutil.virtual_memory().percent)
+    cpu = psutil.cpu_percent()
+    mem = psutil.virtual_memory().percent
+    cpu_usage.set(cpu)
+    memory_usage.set(mem)
+    logging.info(f"CPU: {cpu}%, Memory: {mem}%")
+
 
 def run_metrics_server():
     start_http_server(8000)

@@ -188,3 +188,6 @@ src/drive_auth_debug.py
 # Ignore Hydra logs
 outputs/
 multirun/
+
+# MLflow local runs
+mlruns/

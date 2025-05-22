@@ -10,7 +10,10 @@ services:
       - ./models:/workspace/models
       - ./data:/workspace/data
       - ./configs:/workspace/configs
+      - ./mlruns:/workspace/mlruns
     working_dir: /workspace
+    ports:
+      - "8000:8000"
 
   predict:
     build:
@@ -25,3 +28,12 @@ services:
     ports:
       - "8000:8000"
     working_dir: /workspace
+
+  mlflow-ui:
+    build:
+      context: .
+      dockerfile: dockerfiles/mlflow-ui.dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns

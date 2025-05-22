@@ -1,0 +1,27 @@
+Profiling results for train_and_evaluate:
+         473326 function calls (441967 primitive calls) in 0.271 seconds
+
+   Ordered by: cumulative time
+   List reduced from 662 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.272    0.272 /workspace/diabetes_predictor/models/model.py:60(train_and_evaluate)
+        1    0.000    0.000    0.155    0.155 /workspace/diabetes_predictor/models/model.py:27(train)
+        1    0.000    0.000    0.154    0.154 /usr/local/lib/python3.11/site-packages/sklearn/base.py:1372(wrapper)
+        1    0.000    0.000    0.154    0.154 /usr/local/lib/python3.11/site-packages/sklearn/ensemble/_forest.py:328(fit)
+        2    0.000    0.000    0.108    0.054 /usr/local/lib/python3.11/site-packages/sklearn/utils/parallel.py:54(__call__)
+        2    0.000    0.000    0.108    0.054 /usr/local/lib/python3.11/site-packages/joblib/parallel.py:1968(__call__)
+      204    0.000    0.000    0.108    0.001 /usr/local/lib/python3.11/site-packages/joblib/parallel.py:1887(_get_sequential_output)
+      200    0.001    0.000    0.105    0.001 /usr/local/lib/python3.11/site-packages/sklearn/utils/parallel.py:125(__call__)
+        1    0.000    0.000    0.097    0.097 /workspace/diabetes_predictor/models/model.py:50(save_model)
+        1    0.000    0.000    0.095    0.095 /usr/local/lib/python3.11/site-packages/joblib/numpy_pickle.py:474(dump)
+      100    0.001    0.000    0.095    0.001 /usr/local/lib/python3.11/site-packages/sklearn/ensemble/_forest.py:151(_parallel_build_trees)
+        1    0.000    0.000    0.093    0.093 /usr/local/lib/python3.11/pickle.py:476(dump)
+  13078/1    0.009    0.000    0.093    0.093 /usr/local/lib/python3.11/site-packages/joblib/numpy_pickle.py:360(save)
+  13078/1    0.020    0.000    0.093    0.093 /usr/local/lib/python3.11/pickle.py:535(save)
+    710/1    0.002    0.000    0.093    0.093 /usr/local/lib/python3.11/pickle.py:621(save_reduce)
+    605/1    0.001    0.000    0.093    0.093 /usr/local/lib/python3.11/pickle.py:965(save_dict)
+    605/1    0.003    0.000    0.093    0.093 /usr/local/lib/python3.11/pickle.py:978(_batch_setitems)
+        1    0.000    0.000    0.092    0.092 /usr/local/lib/python3.11/pickle.py:925(save_list)
+        1    0.000    0.000    0.092    0.092 /usr/local/lib/python3.11/pickle.py:938(_batch_appends)
+      100    0.029    0.000    0.080    0.001 /usr/local/lib/python3.11/site-packages/sklearn/tree/_classes.py:231(_fit)
