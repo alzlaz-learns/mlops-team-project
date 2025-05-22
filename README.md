@@ -19,7 +19,7 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
 
 ## 4. Phase Deliverables
 - [x] [PHASE1.md](./PHASE1.md): Project Design & Model Development
-- [ ] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
+- [x] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
 - [ ] [PHASE3.md](./PHASE3.md): Continuous ML & Deployment
 
 ## 5. Setup Instructions
@@ -52,16 +52,21 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     dvc pull
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
+Part 1: 
 Annie: Writing portion of README/Phase1.md
 Aleksa: Researching model, writing code for implementing model
 Alex: Github project setup
+Part2: 
+Annie: Logging, Profiling
+Aleksa: Debugging, Monitoring
+Alex: Docker, Hydra
 
 ## 7. References
 - [x] List of datasets, frameworks, and major third-party tools used
-Diabetes dataset: https://www.openml.org/search?type=data&sort=runs&id=42608
-Framework: scikit-learn (RandomForestClassifier, train_test_split, accuracy_score, classification_report)
-Data: pandas, scipy
-Development tools: Ruff (linting/formatting), MyPy (static type checking)
+    - Diabetes dataset: https://www.openml.org/search?type=data&sort=runs&id=42608
+    - Framework: scikit-learn (RandomForestClassifier)
+    - Data: pandas, scipy
+    - Development tools: Ruff (linting/formatting), MyPy (static type checking)
 
 ---
 
