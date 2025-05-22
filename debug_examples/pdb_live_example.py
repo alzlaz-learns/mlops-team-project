@@ -2,6 +2,7 @@
 
 import pdb
 
+
 def buggy_function():
     a = 10
     b = 0
