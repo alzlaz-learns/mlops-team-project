@@ -84,52 +84,51 @@
     * python -m diabetes_predictor.train_model
     * Model training completed. Final accuracy: 0.7468
     * [example_hydra_standard.txt](examples\example_hydra_standard.txt) full example
-                      precision    recall  f1-score   support
 
+                    precision    recall  f1-score   support
                  0       0.79      0.84      0.81       100
                  1       0.66      0.57      0.61        54
-
           accuracy                           0.75       154
-         macro avg       0.72      0.71      0.71       154
-      weighted avg       0.74      0.75      0.74       154
+          macro avg      0.72      0.71      0.71       154
+          weighted avg   0.74      0.75      0.74       154
+
     * python -m diabetes_predictor.train_model model.n_estimators=200 model.max_depth=10
     * Model training completed. Final accuracy: 0.7532
     * [example_hydra_p1.txt](examples/example_hydra_p1.txt) full example
-                        precision    recall  f1-score   support
 
+                    precision    recall  f1-score   support
                  0       0.80      0.83      0.81       100
                  1       0.66      0.61      0.63        54
-
           accuracy                           0.75       154
-         macro avg       0.73      0.72      0.72       154
-      weighted avg       0.75      0.75      0.75       154
+          macro avg      0.73      0.72      0.72       154
+          weighted avg   0.75      0.75      0.75       154
 
     * python -m diabetes_predictor.train_model model.n_estimators=250 model.max_depth=15
     * Model training completed. Final accuracy: 0.7532
-                    precision    recall  f1-score   support
 
-                 0       0.80      0.83      0.81       100
-                 1       0.66      0.61      0.63        54
-
+                     precision    recall  f1-score   support
+                  0       0.80      0.83      0.81       100
+                  1       0.66      0.61      0.63        54
            accuracy                           0.75       154
-          macro avg       0.73      0.72      0.72       154
-       weighted avg       0.75      0.75      0.75       154
+           macro avg      0.73      0.72      0.72       154
+          weighted avg    0.75      0.75      0.75       154
+
     * python -m diabetes_predictor.train_model model.n_estimators=50 model.max_depth=3
     * Final accuracy: 0.7403
-                     precision    recall  f1-score   support
 
-                  0       0.76      0.88      0.81       100
-                  1       0.68      0.48      0.57        54
+                      precision    recall  f1-score   support
+                   0       0.76      0.88      0.81       100
+                   1       0.68      0.48      0.57        54
 
             accuracy                           0.74       154
            macro avg       0.72      0.68      0.69       154
-        weighted avg       0.73      0.74      0.73       154
+          weighted avg     0.73      0.74      0.73       154
 
 
 ## 7. Documentation & Repository Updates
-- [ ] **7.1 Updated README**
-  - [ ] Instructions for all new tools and processes
-  - [ ] All scripts and configs included in repo
+- [x] **7.1 Updated README**
+  - [x] Instructions for all new tools and processes
+  - [x] All scripts and configs included in repo
 
 ---
 

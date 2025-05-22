@@ -43,8 +43,10 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     *    docker compose run --rm predict
     * run the mlflow ui:
     *   docker compose up mlflow-ui
-    * run pdb on trainer in docker
-    * docker compose run --rm trainer debug=true
+    * run pdb on trainer in docker with hydra flag
+    *   docker compose run --rm trainer debug=true
+    * cli custom configuration hydra
+    *   python -m diabetes_predictor.train_model model.n_estimators=<int> model.max_depth=<int>
 
 - [x] How to run the code and reproduce results on local machine
     * train:
@@ -61,16 +63,16 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
         or in config.yanl can change debug: false -> debug: true
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
-        Annie: Writing portion of README/Phase1.md
-        Aleksa: Researching model, writing code for implementing model
-        Alex: Github project setup
+        Annie: Writing portion of README/Phase1.md, profiling & logging
+    *    Aleksa: Researching model, writing code for implementing model, debbuging
+    *    Alex: Github project setup monitoring & tracking & docker integration.
 
 ## 7. References
 - [x] List of datasets, frameworks, and major third-party tools used
-Diabetes dataset: https://www.openml.org/search?type=data&sort=runs&id=42608
-Framework: scikit-learn (RandomForestClassifier, train_test_split, accuracy_score, classification_report)
-Data: pandas, scipy
-Development tools: Ruff (linting/formatting), MyPy (static type checking)
+* Diabetes dataset: https://www.openml.org/search?type=data&sort=runs&id=42608
+* Framework: scikit-learn (RandomForestClassifier, train_test_split, accuracy_score, classification_report)
+* Data: pandas, scipy
+* Development tools: Ruff (linting/formatting), MyPy (static type checking)
 
 ---
 
