@@ -1,13 +1,13 @@
 # diabetes_predictor/train_model.py
 
 import pdb
+import threading
+
 import hydra
 import mlflow
 import mlflow.models
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
-import threading
-from monitoring.metrics_logger import run_metrics_server, update_metrics
 from omegaconf import DictConfig
 from sklearn.metrics import precision_score, recall_score
 from sklearn.model_selection import train_test_split
@@ -15,6 +15,7 @@ from sklearn.model_selection import train_test_split
 from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from diabetes_predictor.models.model import RandomForestTrainer
 from diabetes_predictor.utils.logging_config import get_logger, setup_logging
+from monitoring.metrics_logger import run_metrics_server, update_metrics
 
 # Set up logging
 setup_logging()
