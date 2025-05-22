@@ -47,8 +47,12 @@ def main(cfg: DictConfig) -> None:
         X = df.drop(cfg.data.target_column, axis=1)
         y = df[cfg.data.target_column].astype(int)
         
-
-        pdb.set_trace()
+        if cfg.debug:
+            pdb.run("print(df.head())", globals(), locals())
+            pdb.run("print(df.shape)", globals(), locals())
+            pdb.run("print(cfg)", globals(), locals())
+            pdb.run("print(X.columns.tolist())", globals(), locals())
+            pdb.run("print(y.value_counts())", globals(), locals())
 
         logger.info("Splitting data into train and test sets")
         X_train, X_test, y_train, y_test = train_test_split(
@@ -98,6 +102,10 @@ def main(cfg: DictConfig) -> None:
         logger.info("Initializing RandomForest trainer")
 
         # Update Prometheus metrics
-        update_metrics(acc=accuracy, loss=0.0) 
+        update_metrics(acc=accuracy, loss=0.0)
+
+
+
+
 if __name__ == "__main__":
     main()
