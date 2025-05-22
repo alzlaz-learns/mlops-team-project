@@ -1,19 +1,43 @@
-# Debugging in This Project (Using Python `pdb`)
+﻿
+---
 
-This project uses Python�s built-in debugger `pdb` to help investigate code behavior during development.
+## ✅ `debug_examples/README.md`
+
+```markdown
+# 🐞 Python Debugging with `pdb`
+
+This folder demonstrates how to use Python’s built-in `pdb` debugger for interactive code inspection and troubleshooting.
 
 ---
 
-## What Is `pdb`?
+## 🎯 Why Use `pdb`?
 
-`pdb` allows you to pause execution at any point in your script and interactively inspect variables, flow, and errors.
+- Pause execution at any point in your code
+- Step through logic line-by-line
+- Inspect variable values
+- Handle bugs more effectively during development
 
 ---
 
-## How to Use in This Project
+## 📁 Folder Contents
 
-### Example: Inspect Preprocessed Data
+| File                    | Description                                      |
+|--------------------------|--------------------------------------------------|
+| `pdb_live_example.py`    | Demonstrates `pdb.set_trace()` live debugging   |
+| `README.md`              | You're here – full documentation and usage      |
+| *(Optional)* `post_mortem_example.py` | Automatically triggers debugger on crash |
 
-A live breakpoint has been added to:
-```python
-diabetes_predictor/train_model.py
+---
+
+## 🛠 Requirements
+
+No installation needed — `pdb` is included in Python by default.
+
+---
+
+## ⚙️ How to Use: Step-by-Step
+
+### Step 1: Run Live Debugging Example
+
+```bash
+python debug_examples/pdb_live_example.py
