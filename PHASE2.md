@@ -13,9 +13,9 @@
   - [x] Debugging tools used (e.g., pdb)
     * pdb
   - [x] Example debugging scenarios and solutions
-    * [Debugging README.md](debug_examples\README.md) 
+    * [Debugging README.md](debug_examples/README.md) 
   - [x] command line output running on docker compose run --rm trainer debug=true
-    * ![alt text](images\debugging\image.png)
+    * ![alt text](images/debugging/image.png)
 ## 3. Profiling & Optimization
 - [x] **3.1 Profiling Scripts**
   - [X] cProfile, PyTorch Profiler, or similar used
@@ -48,8 +48,8 @@
       * install mlflow
       *   pip install mlflow
   - [x] Logging of metrics, parameters, and models
-      * ![alt text](images\tracking\image-1.png)
-      * ![alt text](images\tracking\image.png)
+      * ![alt text](images/tracking/image-1.png)
+      * ![alt text](images/tracking/image.png)
   - [x] Instructions for visualizing and comparing runs
       * visualize outputs on local machine:
           *   mlflow ui
