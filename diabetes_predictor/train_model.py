@@ -91,7 +91,6 @@ def main(cfg: DictConfig) -> None:
             signature=signature
         )
 
-
         # Log metrics to mlflow
         mlflow.log_metric("accuracy", accuracy)
         mlflow.log_metric("precision", precision_score(y_test, y_pred))
@@ -103,8 +102,6 @@ def main(cfg: DictConfig) -> None:
 
         # Update Prometheus metrics
         update_metrics(acc=accuracy, loss=0.0)
-
-
 
 
 if __name__ == "__main__":

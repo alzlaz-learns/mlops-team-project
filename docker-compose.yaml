@@ -12,6 +12,8 @@ services:
       - ./configs:/workspace/configs
       - ./mlruns:/workspace/mlruns
     working_dir: /workspace
+    ports:
+      - "8000:8000"
 
   predict:
     build:

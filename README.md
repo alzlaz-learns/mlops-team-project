@@ -53,7 +53,10 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     * install: pip install "dvc[gdrive]"
     * dvc remote modify gdrive_remote gdrive_service_account_json_file_path ../client_secrets.json --local
     * dvc pull
-    
+- [x] pdb run locally to test with pdb flag
+    train:
+        python -m diabetes_predictor.train_model debug=true
+        or in config.yanl can change debug: false -> debug: true
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
         Annie: Writing portion of README/Phase1.md
