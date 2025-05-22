@@ -43,6 +43,8 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
     *    docker compose run --rm predict
     * run the mlflow ui:
     *   docker compose up mlflow-ui
+    * run pdb on trainer in docker
+    * docker compose run --rm trainer debug=true
 
 - [x] How to run the code and reproduce results on local machine
     * train:

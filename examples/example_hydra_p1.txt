@@ -1,0 +1,43 @@
+INFO: Starting model training process
+INFO: MLflow run started
+INFO: Loading and preprocessing data
+INFO: Data loaded and preprocessed. Shape: (768, 9)
+INFO: Splitting data into train and test sets
+INFO: Training set size: 614, Test set size: 154
+INFO: Initializing RandomForest trainer
+INFO: Initializing RandomForestClassifier with n_estimators=200, max_depth=10
+INFO: Training and evaluating model
+INFO: Starting train and evaluate process
+INFO: Training RandomForest model on 614 samples with 8 features
+INFO: RandomForestTrainer took 0.25 seconds
+INFO: RandomForestTrainer - training_duration_sec: 0.25122618675231934
+INFO: RandomForestTrainer - training_samples: 614
+INFO: RandomForestTrainer - features: 8
+INFO: Model training completed
+INFO: Evaluating model on test set
+INFO: RandomForestTrainer took 0.02 seconds
+INFO: RandomForestTrainer - training_duration_sec: 0.015581130981445312
+INFO: RandomForestTrainer - accuracy: 0.7532467532467533
+INFO: RandomForestTrainer - test_samples: 154
+INFO: Model accuracy: 0.7532
+INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.83      0.81       100
+           1       0.66      0.61      0.63        54
+
+    accuracy                           0.75       154
+   macro avg       0.73      0.72      0.72       154
+weighted avg       0.75      0.75      0.75       154
+
+INFO: Saving model to models/random_forest_diabetes.pkl
+INFO: RandomForestTrainer took 0.10 seconds
+INFO: RandomForestTrainer - training_duration_sec: 0.10009932518005371
+INFO: RandomForestTrainer - model_size_mb: 2.7250757217407227
+INFO: Model saved successfully
+INFO: Train and evaluate process completed
+INFO:
+INFO: Model training completed. Final accuracy: 0.7532
+INFO: MLflow run completed
+INFO: Initializing RandomForest trainer
+[2025-05-22 09:58:28,763][root][INFO] - CPU: 8.9%, Memory: 46.8%
