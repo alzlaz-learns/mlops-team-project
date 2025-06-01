@@ -19,7 +19,7 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
 
 ## 4. Phase Deliverables
 - [x] [PHASE1.md](./PHASE1.md): Project Design & Model Development
-- [ ] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
+- [x] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
 - [ ] [PHASE3.md](./PHASE3.md): Continuous ML & Deployment
 
 ## 5. Setup Instructions
@@ -63,8 +63,8 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
         or in config.yanl can change debug: false -> debug: true
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
-        Annie: Writing portion of README/Phase1.md, profiling & logging
-    *    Aleksa: Researching model, writing code for implementing model, debbuging
+    *    Annie: Writing portion of README/Phase1.md, profiling & logging
+    *    Aleksa: Researching model, writing code for implementing model, debugging
     *    Alex: Github project setup monitoring & tracking & docker integration.
 
 ## 7. References

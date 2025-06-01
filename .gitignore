@@ -185,9 +185,13 @@ models/*.pkl
 client_secrets.json
 src/drive_auth_debug.py
 
+# Ignore profiling files
+*.prof
+
 # Ignore Hydra logs
 outputs/
 multirun/
 
 # MLflow local runs
 mlruns/
+
