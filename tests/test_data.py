@@ -1,10 +1,10 @@
-import pytest
-import pandas as pd
 from pathlib import Path
-import os
+
+import pandas as pd
+import pytest
+
 from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from tests import _PATH_DATA
-import numpy as np
 
 EXPECTED_FEATURES = [
     'Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
@@ -13,7 +13,7 @@ EXPECTED_FEATURES = [
 EXPECTED_FEATURE_COUNT = len(EXPECTED_FEATURES)
 
 @pytest.fixture
-def raw_data():
+def raw_data() -> pd.DataFrame:
     """Fixture to load raw data"""
     data_path = Path(_PATH_DATA) / "raw" / "diabetes.arff"
     if not data_path.exists():
@@ -24,14 +24,14 @@ def raw_data():
         pytest.fail(f"Failed to load data: {str(e)}")
 
 @pytest.fixture
-def processed_data(raw_data):
+def processed_data(raw_data: pd.DataFrame) -> pd.DataFrame:
     """Fixture to load and preprocess data"""
     try:
         return preprocess_data(raw_data)
     except Exception as e:
         pytest.fail(f"Failed to preprocess data: {str(e)}")
 
-def test_data_preprocessing(processed_data):
+def test_data_preprocessing(processed_data: pd.DataFrame) -> None:
     """Test that data is preprocessed correctly"""
     # Check basic properties
     assert isinstance(processed_data, pd.DataFrame), "Processed data should be a DataFrame"
@@ -64,7 +64,7 @@ def test_data_preprocessing(processed_data):
     assert len(non_zero_mean) == 0, f"Features with non-zero mean: {non_zero_mean.index.tolist()}"
     assert len(non_unit_std) == 0, f"Features with non-unit std: {non_unit_std.index.tolist()}"
 
-def test_train_test_split(processed_data):
+def test_train_test_split(processed_data: pd.DataFrame) -> None:
     """Test that data can be split into train and test sets"""
     from sklearn.model_selection import train_test_split
     

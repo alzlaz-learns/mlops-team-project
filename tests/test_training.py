@@ -1,18 +1,20 @@
-import pytest
-import pandas as pd
-import numpy as np
 import os
 from pathlib import Path
-from omegaconf import OmegaConf
-from diabetes_predictor.train_model import main
+
+import numpy as np
+import pandas as pd
+import pytest
+from omegaconf import DictConfig, OmegaConf
+
 from diabetes_predictor.data.make_dataset import load_arff_data, preprocess_data
 from diabetes_predictor.models.model import RandomForestTrainer
+from diabetes_predictor.train_model import main
 from tests import _PATH_DATA
 
 DATA_PATH = Path(_PATH_DATA) / "raw" / "diabetes.arff"
 
 @pytest.fixture
-def sample_config():
+def sample_config() -> DictConfig:
     """Create a sample configuration for testing"""
     return OmegaConf.create({
         "model": {
@@ -29,14 +31,14 @@ def sample_config():
     })
 
 @pytest.fixture
-def sample_data():
+def sample_data() -> pd.DataFrame:
     """Create sample data for testing"""
     data_path = Path(_PATH_DATA) / "raw" / "diabetes.arff"
     data = load_arff_data(data_path)
     return preprocess_data(data)
 
 @pytest.mark.skipif(not os.path.exists(DATA_PATH), reason="Diabetes dataset not found")
-def test_train_test_split(sample_data):
+def test_train_test_split(sample_data: pd.DataFrame) -> None:
     """Test that train-test split maintains data distribution"""
     X = sample_data.drop('Outcome', axis=1)
     y = sample_data['Outcome']
@@ -59,7 +61,7 @@ def test_train_test_split(sample_data):
     assert np.allclose(train_dist, test_dist, atol=0.1)  # Allow 10% difference
 
 @pytest.mark.skipif(not os.path.exists(DATA_PATH), reason="Diabetes dataset not found")
-def test_forward_pass(sample_data):
+def test_forward_pass(sample_data: pd.DataFrame) -> None:
     """Test that model can make predictions on new data"""
     X = sample_data.drop('Outcome', axis=1)
     y = sample_data['Outcome']
@@ -86,7 +88,7 @@ def test_forward_pass(sample_data):
     assert all(pred in [0, 1] for pred in predictions)
 
 @pytest.mark.skipif(not os.path.exists(DATA_PATH), reason="Diabetes dataset not found")
-def test_model_training_and_evaluation(sample_data):
+def test_model_training_and_evaluation(sample_data: pd.DataFrame) -> None:
     """Test model training, prediction, and evaluation"""
     X = sample_data.drop('Outcome', axis=1)
     y = sample_data['Outcome']
@@ -119,10 +121,11 @@ def test_model_training_and_evaluation(sample_data):
     assert accuracy > 0.8  # Model should achieve at least 80% accuracy on training data
 
 @pytest.mark.skipif(not os.path.exists(DATA_PATH), reason="Diabetes dataset not found")
-def test_invalid_input(sample_data):
+def test_invalid_input(sample_data: pd.DataFrame) -> None:
     """Test that model handles invalid input appropriately"""
     X = sample_data.drop('Outcome', axis=1)
     y = sample_data['Outcome']
+    
     trainer = RandomForestTrainer()
     
     # Test with mismatched lengths
@@ -135,7 +138,12 @@ def test_invalid_input(sample_data):
     (100, 6, 0.80),  # Medium model
     (200, 10, 0.85)  # Large model
 ])
-def test_model_hyperparameters(sample_data, n_estimators, max_depth, min_accuracy):
+def test_model_hyperparameters(
+    sample_data: pd.DataFrame,
+    n_estimators: int,
+    max_depth: int,
+    min_accuracy: float
+) -> None:
     """Test model performance with different hyperparameters"""
     X = sample_data.drop('Outcome', axis=1)
     y = sample_data['Outcome']
@@ -151,10 +159,11 @@ def test_model_hyperparameters(sample_data, n_estimators, max_depth, min_accurac
     accuracy = trainer.evaluate(X, y)
     
     # Verify accuracy meets minimum threshold for this configuration
-    assert accuracy >= min_accuracy, f"Model with n_estimators={n_estimators}, max_depth={max_depth} achieved accuracy {accuracy:.3f}, expected at least {min_accuracy}"
+    assert accuracy >= min_accuracy, f"""Model with n_estimators={n_estimators}, 
+    max_depth={max_depth} achieved accuracy {accuracy:.3f}, expected at least {min_accuracy}"""
 
 @pytest.mark.skipif(not os.path.exists(DATA_PATH), reason="Diabetes dataset not found")
-def test_train_model_main(tmp_path):
+def test_train_model_main(tmp_path: Path) -> None:
     """Test the main function in train_model.py using a temporary config and output directory."""
     # Create a temporary config file
     config = OmegaConf.create({
