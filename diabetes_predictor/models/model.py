@@ -13,7 +13,7 @@ from diabetes_predictor.utils.profiling import PerformanceTracker, profile_funct
 logger = get_logger(__name__)
 
 class RandomForestTrainer:
-    def __init__(self, model_output_path: str = "models/random_forest_diabetes.pkl", 
+    def __init__(self, model_output_path: str = "models/random_forest_diabetes.pkl",
                  n_estimators: int = 100, max_depth: int = 6, random_state: int = 42):
         self.model_output_path = model_output_path
         logger.info(f"Initializing RandomForestClassifier with n_estimators={n_estimators}, max_depth={max_depth}")

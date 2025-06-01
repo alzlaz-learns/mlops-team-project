@@ -20,7 +20,7 @@ from monitoring.metrics_logger import run_metrics_server, update_metrics
 # Set up logging
 setup_logging()
 logger = get_logger(__name__)
-threading.Thread(target=run_metrics_server, daemon=True).start()  
+threading.Thread(target=run_metrics_server, daemon=True).start()
 #set up hydra
 @hydra.main(config_path="../configs", config_name="config", version_base=None)
 def main(cfg: DictConfig) -> None:
@@ -39,15 +39,15 @@ def main(cfg: DictConfig) -> None:
         mlflow.log_param("max_depth", cfg.model.max_depth)
         mlflow.log_param("random_state", cfg.seed)
         mlflow.log_param("test_size", cfg.data.test_size)
-    
+
         logger.info("Loading and preprocessing data")
         df = load_arff_data(cfg.data.input_path)
         df = preprocess_data(df)
         logger.info(f"Data loaded and preprocessed. Shape: {df.shape}")
-        
+
         X = df.drop(cfg.data.target_column, axis=1)
         y = df[cfg.data.target_column].astype(int)
-        
+
         if cfg.debug:
             pdb.run("print(df.head())", globals(), locals())
             pdb.run("print(df.shape)", globals(), locals())
@@ -70,7 +70,7 @@ def main(cfg: DictConfig) -> None:
             max_depth=cfg.model.max_depth,
             random_state=cfg.seed
         )
-    
+
         logger.info("Training and evaluating model")
         model, accuracy = trainer.train_and_evaluate(X_train, X_test, y_train, y_test)
         logger.info(f"Model training completed. Final accuracy: {accuracy:.4f}")
@@ -97,7 +97,7 @@ def main(cfg: DictConfig) -> None:
         mlflow.log_metric("precision", precision_score(y_test, y_pred))
         mlflow.log_metric("recall", recall_score(y_test, y_pred))
 
-        
+
         logger.info("MLflow run completed")
         logger.info("Initializing RandomForest trainer")
 

@@ -27,13 +27,13 @@ def sample_data() -> tuple[pd.DataFrame, pd.Series]:
 def test_model_output_shape(model: RandomForestTrainer, sample_data: tuple[pd.DataFrame, pd.Series]) -> None:
     """Test that model output has correct shape"""
     X, y = sample_data
-    
+
     # Train the model
     model.train(X, y)
-    
+
     # Get predictions
     predictions = model.model.predict(X)
-    
+
     # Check output shape
     assert predictions.shape == (len(X),), "Predictions should be 1D array with same length as input"
     assert all(pred in [0, 1] for pred in predictions), "Predictions should be binary (0 or 1)"
@@ -41,13 +41,13 @@ def test_model_output_shape(model: RandomForestTrainer, sample_data: tuple[pd.Da
 def test_model_probability_shape(model: RandomForestTrainer, sample_data: tuple[pd.DataFrame, pd.Series]) -> None:
     """Test that model probability output has correct shape"""
     X, y = sample_data
-    
+
     # Train the model
     model.train(X, y)
-    
+
     # Get probability predictions
     proba = model.model.predict_proba(X)
-    
+
     # Check output shape
     assert proba.shape == (len(X), 2), "Probability output should be (n_samples, 2)"
     assert np.allclose(proba.sum(axis=1), 1.0), "Probabilities should sum to 1 for each sample"

@@ -37,11 +37,11 @@ def test_data_preprocessing(processed_data: pd.DataFrame) -> None:
     assert isinstance(processed_data, pd.DataFrame), "Processed data should be a DataFrame"
     assert not processed_data.empty, "Processed data should not be empty"
     assert processed_data.shape[1] == EXPECTED_FEATURE_COUNT, f"Expected {EXPECTED_FEATURE_COUNT} features"
-    
+
     # Check column names
     missing_cols = [col for col in EXPECTED_FEATURES if col not in processed_data.columns]
     assert not missing_cols, f"Missing columns: {missing_cols}"
-    
+
     # Check data types
     for col in processed_data.columns:
         if col != 'Outcome':
@@ -52,30 +52,30 @@ def test_data_preprocessing(processed_data: pd.DataFrame) -> None:
     # Check for missing values
     null_cols = processed_data.columns[processed_data.isnull().any()].tolist()
     assert not null_cols, f"Found null values in columns: {null_cols}"
-    
+
     # Check normalization
     feature_cols = processed_data.columns.drop('Outcome')
     means = processed_data[feature_cols].mean()
     stds = processed_data[feature_cols].std()
-    
+
     non_zero_mean = means[abs(means) > 1e-10]
     non_unit_std = stds[abs(stds - 1) > 1e-10]
-    
+
     assert len(non_zero_mean) == 0, f"Features with non-zero mean: {non_zero_mean.index.tolist()}"
     assert len(non_unit_std) == 0, f"Features with non-unit std: {non_unit_std.index.tolist()}"
 
 def test_train_test_split(processed_data: pd.DataFrame) -> None:
     """Test that data can be split into train and test sets"""
     from sklearn.model_selection import train_test_split
-    
+
     X = processed_data.drop('Outcome', axis=1)
     y = processed_data['Outcome']
-    
+
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
     )
-    
+
     assert len(X_train) + len(X_test) == len(X)
     assert len(y_train) + len(y_test) == len(y)
     assert len(X_train) == len(y_train)
-    assert len(X_test) == len(y_test) 
+    assert len(X_test) == len(y_test)
