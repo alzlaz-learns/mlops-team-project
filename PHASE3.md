@@ -23,19 +23,36 @@
     * Running Tests:
         python -m pytest
     * Example Test Cases:
-        ```python
         # Testing model output shapes
         def test_model_output_shape():
             model = RandomForestTrainer()
             X = sample_data.drop('Outcome', axis=1)
             predictions = model.predict(X)
             assert predictions.shape == (len(X),)
-        ```
-- [ ] **1.2 GitHub Actions Workflows**
-  - [ ] CI workflows for running tests, DVC, code checks (e.g., ruff), Docker builds
-  - [ ] Workflow YAML files included
-- [ ] **1.3 Pre-commit Hooks**
-  - [ ] Pre-commit config and setup instructions
+- [x] **1.2 GitHub Actions Workflows**
+  - [x] CI workflows for running tests, DVC, code checks (e.g., ruff), Docker builds
+  - [x] Workflow YAML files included
+    * `.github/workflows/tests.yml`: main pytests file
+    * `.github/workflows/codecheck.yml`: codechecking (ruff/mypy)
+
+- [x] **1.3 Pre-commit Hooks**
+  - [x] Pre-commit config and setup instructions
+    * Setup Instructions:
+        1. Install pre-commit: `pip install pre-commit`
+        2. Install the hooks: `pre-commit install`
+        3. Run manually: `pre-commit run --all-files`
+        - Bypass with `git commit --no-verify -m "Bypassing pre-commit"`
+        - Disable with `pre-commit uninstall`
+        - Config at `.pre-commit-config.yaml`
+    * Hooks included:
+        - `trailing-whitespace`: Removes trailing whitespace
+        - `end-of-file-fixer`: Ensures files end with a newline
+        - `check-yaml`: Validates YAML syntax
+        - `check-toml`: Validates TOML files
+        - `check-ast`: Check valid python
+        - `check-added-large-files`: Prevents large files from being committed
+        - `ruff`: Python linter for code quality checks
+        - `pytest`: Run pytest
 
 ## 2. Continuous Docker Building & CML
 - [ ] **2.1 Docker Image Automation**
