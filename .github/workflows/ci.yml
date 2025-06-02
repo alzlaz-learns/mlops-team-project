@@ -46,9 +46,8 @@ jobs:
       - name: Run ruff
         run: ruff check diabetes_predictor/
 
-      # (Optional) Build Docker image for testing
       - name: Docker build for trainer
-        run: docker build -f dockerfile/train_model.dockerfile -t trainer-image .
+        run: docker build -f dockerfiles/train_model.dockerfile -t trainer-image .
 
       - name: Docker build for predictor
-        run: docker build -f dockerfile/predict_model.dockerfile -t predictor-image .
+        run: docker build -f dockerfiles/predict_model.dockerfile -t predictor-image .
