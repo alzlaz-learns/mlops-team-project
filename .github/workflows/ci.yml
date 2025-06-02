@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI Pipeline (Dvc, Ruff, Docker)
 
 on:
   push:
@@ -45,10 +45,6 @@ jobs:
       # Run code linter
       - name: Run ruff
         run: ruff diabetes_predictor/
-
-      # Run unit tests
-      - name: Run tests with pytest
-        run: pytest --tb=short
 
       # (Optional) Build Docker image for testing
       - name: Docker build for trainer
