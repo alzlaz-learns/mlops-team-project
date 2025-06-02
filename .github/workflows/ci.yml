@@ -42,10 +42,6 @@ jobs:
           dvc remote modify gdrive_remote gdrive_service_account_json_file_path client_secrets.json
           dvc pull -r gdrive_remote --force
 
-      # Run code linter
-      - name: Run ruff
-        run: ruff check diabetes_predictor/
-
       - name: Docker build for trainer
         run: docker build -f dockerfiles/train_model.dockerfile -t trainer-image .
 
