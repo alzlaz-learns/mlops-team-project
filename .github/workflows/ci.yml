@@ -48,7 +48,7 @@ jobs:
 
       # (Optional) Build Docker image for testing
       - name: Docker build for trainer
-        run: docker build -f train_model.dockerfile -t trainer-image .
+        run: docker build -f dockerfile/train_model.dockerfile -t trainer-image .
 
       - name: Docker build for predictor
-        run: docker build -f predict_model.dockerfile -t predictor-image .
+        run: docker build -f dockerfile/predict_model.dockerfile -t predictor-image .
