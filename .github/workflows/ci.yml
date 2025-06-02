@@ -33,6 +33,8 @@ jobs:
       # Restore DVC cache
       - name: Set up DVC
         uses: iterative/setup-dvc@v1
+        with:
+          version: 'latest'
 
       - name: Authenticate with Google Service Account
         env:
