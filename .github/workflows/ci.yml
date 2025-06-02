@@ -44,7 +44,7 @@ jobs:
 
       # Run code linter
       - name: Run ruff
-        run: ruff diabetes_predictor/
+        run: ruff check diabetes_predictor/
 
       # (Optional) Build Docker image for testing
       - name: Docker build for trainer
