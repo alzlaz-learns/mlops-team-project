@@ -1,4 +1,4 @@
-name: CI Pipeline (Dvc, Ruff, Docker)
+name: CI Pipeline (Dvc, Docker)
 
 on:
   push:
