@@ -3,7 +3,7 @@
 import pdb
 
 
-def buggy_function():
+def buggy_function() -> float:
     a = 10
     b = 0
     pdb.set_trace()  # Pauses here

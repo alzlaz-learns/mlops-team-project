@@ -13,7 +13,7 @@
   - [x] Debugging tools used (e.g., pdb)
     * pdb
   - [x] Example debugging scenarios and solutions
-    * [Debugging README.md](debug_examples/README.md) 
+    * [Debugging README.md](debug_examples/README.md)
   - [x] command line output running on docker compose run --rm trainer debug=true
     * ![alt text](images/debugging/image.png)
 ## 3. Profiling & Optimization
@@ -38,7 +38,7 @@
     * Lightweight model with joblib dump
     * Parallel tree building via sklearn's `joblib`
     [example_profiling.txt](examples/example_profiling.txt)
-  
+
 
 ## 4. Experiment Management & Tracking
 - [x] **4.1 Experiment Tracking Tools**
@@ -72,7 +72,7 @@
     * INFO: MLflow run completed	Indicates MLflow logging has finished
     * INFO: RandomForestTrainer - training_duration_sec: 0.142	Time taken to train the model
     * INFO: Prediction result: Non-Diabetic	Output of a sample prediction
-    
+
 ## 6. Configuration Management
 - [x] **6.1 Hydra or Similar**
   * hydra
@@ -133,4 +133,3 @@
 ---
 
 > **Checklist:** Use this as a guide for documenting your Phase 2 deliverables. Focus on operational robustness, reproducibility, and clear instructions for all tools and processes.
-

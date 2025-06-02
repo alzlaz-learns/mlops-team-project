@@ -53,7 +53,7 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     if "Outcome" in df.columns:
         feature_cols = df.columns.drop("Outcome")
     else:
-        feature_cols = df.columns 
+        feature_cols = df.columns
 
     df[feature_cols] = (df[feature_cols] - df[feature_cols].mean()) / df[feature_cols].std()
 

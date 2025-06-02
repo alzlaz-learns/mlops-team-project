@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 
 def main() -> None:
     logger.info("Starting prediction process")
-    
+
     logger.info("Creating sample input data")
     input_data = pd.DataFrame([{
         "Pregnancies": 3,
@@ -26,7 +26,7 @@ def main() -> None:
 
     logger.info("Initializing DiabetesPredictor")
     predictor = DiabetesPredictor()
-    
+
     logger.info("Making prediction")
     result = predictor.predict(input_data)
     logger.info(f"Prediction result: {result}")

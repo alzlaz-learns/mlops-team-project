@@ -10,10 +10,10 @@ logger = get_logger(__name__)
 
 def profile_function(func: Callable) -> Callable:
     """Decorator to profile a function using cProfile.
-    
+
     Args:
         func: Function to profile
-        
+
     Returns:
         Wrapped function that profiles execution
     """
@@ -35,16 +35,16 @@ def profile_function(func: Callable) -> Callable:
 
 class PerformanceTracker:
     """Class to track performance metrics of model training and prediction."""
-    
+
     def __init__(self, name: str):
         self.name = name
         self.start_time: Optional[float] = None
         self.metrics: dict = {}
-        
+
     def start(self) -> None:
         """Start timing an operation."""
         self.start_time = time.time()
-        
+
     def end(self) -> float:
         """End timing an operation and return duration in seconds."""
         if self.start_time is None:
@@ -53,21 +53,21 @@ class PerformanceTracker:
         self.metrics['duration'] = duration
         logger.info(f"{self.name} took {duration:.2f} seconds")
         return duration
-        
+
     def add_metric(self, name: str, value: float) -> None:
         """Add a custom metric.
-        
+
         Args:
             name: Name of the metric
             value: Value of the metric
         """
         self.metrics[name] = value
         logger.info(f"{self.name} - {name}: {value}")
-        
+
     def get_metrics(self) -> dict:
         """Get all tracked metrics.
-        
+
         Returns:
             Dictionary of all metrics
         """
-        return self.metrics 
+        return self.metrics
