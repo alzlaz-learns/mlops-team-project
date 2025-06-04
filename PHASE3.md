@@ -55,17 +55,49 @@
         - `pytest`: Run pytest
 
 ## 2. Continuous Docker Building & CML
-- [ ] **2.1 Docker Image Automation**
-  - [ ] Automated Docker builds and pushes (GitHub Actions)
-  - [ ] Dockerfile and build/push instructions for Docker Hub and GCP Artifact Registry
+- [x] **2.1 Docker Image Automation**
+  - [x] Automated Docker builds and pushes (GitHub Actions)
+    - Two workflows were implemented:
+      - Triggers: push to main
+  - [x] Dockerfile and build/push instructions for Docker Hub and GCP Artifact Registry
+    - Manual:
+      - docker build -f dockerfiles/train_model.dockerfile -t alzlaz1/trainer-image:latest .
+      - docker push alzlaz1/trainer-image:latest
+      - docker build -f dockerfiles/predict_model.dockerfile -t alzlaz1/predictor-image:latest .
+      - docker push alzlaz1/predictor-image:latest
+    Secrets stored: DOCKERHUB_USERNAME, DOCKERHUB_TOKEN
+    ![alt text](images/gcp_repo.png)
+    - GCP Artifact Registry
+      - File: cloudbuild.yaml
+      - Triggered by push to main branch via GCP trigger
+      ![alt text](images/gcp_trigger.png)
+      - Builds and pushes both images to GCP Artifact Registry:
+      - Trigger is connected to GitHub repository via GCP Cloud Build Triggers
 - [ ] **2.2 Continuous Machine Learning (CML)**
   - [ ] CML integration for automated model training on PRs
   - [ ] Example CML outputs (metrics, visualizations)
   - [ ] Setup and usage documentation
 
 ## 3. Deployment on Google Cloud Platform (GCP)
-- [ ] **3.1 GCP Artifact Registry**
-  - [ ] Steps for creating and pushing Docker images to GCP
+- [x] **3.1 GCP Artifact Registry**
+  - [x] Steps for creating and pushing Docker images to GCP
+    gcloud artifacts repositories create diabetes-pred \
+    --repository-format=docker \
+    --location=us-central1 \
+    --description="Docker repo for ML project"
+
+    - backslashes can be replaced with ` for powershell environment
+
+  - docker tag trainer-image us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image
+  - docker push us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image
+
+  - Access gcp:
+    - gcloud auth login
+    - gcloud auth configure-docker us-central1-docker.pkg.dev
+
+    - docker pull us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image:latest
+    - docker pull us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest
+
 - [ ] **3.2 Custom Training Job on GCP**
   - [ ] Vertex AI/Compute Engine job setup and documentation
   - [ ] Data storage in GCP bucket
