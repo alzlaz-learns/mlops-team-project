@@ -23,15 +23,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push trainer image
-        env:
-          DOCKER_BUILDKIT: 0
-        run: |
-          docker build -f dockerfiles/train_model.dockerfile -t alzlaz1/trainer-image:latest .
-          docker push alzlaz1/trainer-image:latest
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: dockerfiles/train_model.dockerfile
+          push: true
+          tags: alzlaz1/trainer-image:latest
 
       - name: Build and push predictor image
-        env:
-          DOCKER_BUILDKIT: 0
-        run: |
-          docker build -f dockerfiles/predict_model.dockerfile -t alzlaz1/predictor-image:latest .
-          docker push alzlaz1/predictor-image:latest
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: dockerfiles/predict_model.dockerfile
+          push: true
+          tags: alzlaz1/predictor-image:latest
