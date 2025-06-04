@@ -12,27 +12,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install dvc[gs] cml
+      - uses: iterative/setup-cml@v1
 
-      - name: Train model and capture metrics
-        run: |
-          python src/train_model.py > metrics.txt
-
-      - name: Create CML report
+      - name: Train model and create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install -r requirements.txt
+          python src/train_model.py > metrics.txt
+
           echo "## Model Training Metrics" > report.md
           cat metrics.txt >> report.md
-          cml comment create report.md
+
+          # If you generate a plot:
+          # cml publish plot.png --md >> report.md
+
+          cml send-comment report.md
