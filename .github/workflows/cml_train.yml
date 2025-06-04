@@ -1,8 +1,5 @@
 name: CML Model Training Report
 on:
-  push:
-      branches:
-        - cml-metrics-report
   pull_request:
       branches: 
         - main
@@ -35,4 +32,4 @@ jobs:
           # If you generate a plot:
           # cml publish plot.png --md >> report.md
 
-          cml send-comment report.md
+          cml comment create --target=pr --publish report.md
