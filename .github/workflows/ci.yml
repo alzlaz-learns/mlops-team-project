@@ -30,11 +30,13 @@ jobs:
           pip install -r requirements.txt
           pip install .
 
-      # Restore DVC cache
-      - name: Set up DVC
-        uses: iterative/setup-dvc@v1
+      # Retry logic for DVC setup
+      - name: Retry DVC install
+        uses: nick-fields/retry@v2
         with:
-          version: 'latest'
+          timeout_minutes: 2
+          max_attempts: 3
+          command: pip install "dvc[gdrive]"
 
       - name: Authenticate with Google Service Account
         env:
