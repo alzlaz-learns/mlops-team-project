@@ -13,4 +13,4 @@ steps:
 
   # Push predictor image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest']
+    args: ['push', 'us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest'] 
