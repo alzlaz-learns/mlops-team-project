@@ -1,0 +1,52 @@
+name: CI Pipeline (Dvc, Docker)
+
+on:
+  push:
+    branches:
+        - main
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      # Install dependencies
+      - name: Install pip dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install .
+
+      # Retry logic for DVC setup
+      - name: Retry DVC install
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          command: pip install "dvc[gdrive]"
+
+      - name: Authenticate with Google Service Account
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS_JSON }}
+        run: |
+          echo "$GDRIVE_CREDENTIALS" > client_secrets.json
+          dvc remote modify gdrive_remote gdrive_service_account_json_file_path client_secrets.json
+          dvc pull -r gdrive_remote --force
+
+      - name: Docker build for trainer
+        run: docker build -f dockerfiles/train_model.dockerfile -t trainer-image .
+
+      - name: Docker build for predictor
+        run: docker build -f dockerfiles/predict_model.dockerfile -t predictor-image .
