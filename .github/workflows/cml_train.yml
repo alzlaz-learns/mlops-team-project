@@ -24,12 +24,14 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
-          python src/train_model.py > metrics.txt
+
+          echo "Running model training..."
+          python src/train_model.py > metrics.txt 2>&1
 
           echo "## Model Training Metrics" > report.md
           cat metrics.txt >> report.md
 
-          # If you generate a plot:
-          # cml publish plot.png --md >> report.md
+          echo "Report contents:"
+          cat report.md
 
           cml comment create --target=pr --publish report.md
