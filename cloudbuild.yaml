@@ -1,0 +1,16 @@
+steps:
+  # Build trainer image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'dockerfiles/train_model.dockerfile', '-t', 'us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image:latest', '.']
+
+  # Push trainer image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image:latest']
+
+  # Build predictor image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-f', 'dockerfiles/predict_model.dockerfile', '-t', 'us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest', '.']
+
+  # Push predictor image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest']
