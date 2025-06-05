@@ -7,7 +7,7 @@ on:
       - phase3/cloud_functions
     paths:
       - diabetes-predictor-ui/**
-
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
