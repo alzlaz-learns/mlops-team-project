@@ -73,11 +73,12 @@
       ![alt text](images/gcp_trigger.png)
       - Builds and pushes both images to GCP Artifact Registry:
       - Trigger is connected to GitHub repository via GCP Cloud Build Triggers
-- [ ] **2.2 Continuous Machine Learning (CML)**
-  - [ ] CML integration for automated model training on PRs
-  - [ ] Example CML outputs (metrics, visualizations)
+- [x] **2.2 Continuous Machine Learning (CML)**
+  - [x] CML integration for automated model training on PRs
+  - [x] Example CML outputs (metrics, visualizations)
+    - Metrics
   - [ ] Setup and usage documentation
-
+    ![alt text](images/cml_output.png)
 ## 3. Deployment on Google Cloud Platform (GCP)
 - [x] **3.1 GCP Artifact Registry**
   - [x] Steps for creating and pushing Docker images to GCP
@@ -90,7 +91,7 @@
 
   - docker tag trainer-image us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image
   - docker push us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image
-
+  ![alt text](docs/screenshots/Artifact_Screenshot.png)
   - Access gcp:
     - gcloud auth login
     - gcloud auth configure-docker us-central1-docker.pkg.dev
@@ -99,17 +100,23 @@
     - docker pull us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest
 
 - [x] **3.2 Custom Training Job on GCP**
-  - [ ] Vertex AI/Compute Engine job setup and documentation
-  - [ ] Data storage in GCP bucket
+  - [x] Vertex AI/Compute Engine job setup and documentation
+    - ![alt text](docs/screenshots/vertex_ai.png)
+    - ![alt text](docs/screenshots/vertex_ai2.png)
+  - [x] Data storage in GCP bucket
+    ![alt text](images/gcp_bucket3.png)
 - [ ] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
   - [ ] FastAPI app for model predictions
+  
   - [ ] Deployment steps and API testing instructions
 - [ ] **3.4 Dockerize & Deploy Model with GCP Cloud Run**
   - [ ] Containerization and deployment steps
   - [ ] Testing and result documentation
 - [ ] **3.5 Interactive UI Deployment**
-  - [ ] Streamlit or Gradio app for model demonstration
-  - [ ] Deployment on Hugging Face platform
+  - [x] Streamlit or Gradio app for model demonstration
+    -Gradio
+  - [x] Deployment on Hugging Face platform
+    [interactive ui](docs/interactive_ui.md)
   - [ ] Integration of UI deployment into GitHub Actions workflow
   - [x] copy diabetes_predictor/models/model.joblib diabetes-predictor-ui/
   - [ ] Screenshots and usage examples
