@@ -1,0 +1,45 @@
+ Volume in drive C is OS
+ Volume Serial Number is A8BB-69DD
+
+ Directory of C:\Users\aleks\mlops-team-project
+
+06/04/2025  10:29 PM    <DIR>          .
+06/04/2025  02:16 PM    <DIR>          ..
+06/04/2025  09:51 PM    <DIR>          .dvc
+06/04/2025  09:51 PM               142 .dvcignore
+05/05/2025  01:50 PM    <DIR>          .github
+06/04/2025  09:51 PM             3,760 .gitignore
+06/04/2025  09:51 PM               695 .pre-commit-config.yaml
+06/04/2025  09:51 PM               868 cloudbuild.yaml
+06/04/2025  09:51 PM    <DIR>          configs
+05/05/2025  01:50 PM    <DIR>          data
+06/04/2025  09:51 PM    <DIR>          debug_examples
+06/04/2025  09:51 PM    <DIR>          diabetes_predictor
+06/04/2025  09:51 PM               874 docker-compose.yaml
+06/04/2025  09:51 PM    <DIR>          dockerfiles
+06/04/2025  09:51 PM    <DIR>          docs
+06/04/2025  09:51 PM               332 environment.yml
+06/04/2025  09:51 PM    <DIR>          examples
+06/04/2025  10:29 PM                 0 filelist.txt
+06/04/2025  09:51 PM    <DIR>          images
+05/05/2025  01:50 PM                 0 LICENSE
+06/04/2025  10:03 PM                31 main.py
+06/04/2025  09:51 PM             4,582 Makefile
+06/04/2025  09:51 PM                 0 metrics.txt
+06/04/2025  09:51 PM    <DIR>          models
+06/04/2025  09:51 PM    <DIR>          monitoring
+06/04/2025  09:51 PM               119 mypy.ini
+05/05/2025  01:50 PM    <DIR>          notebooks
+06/04/2025  09:51 PM             9,405 PHASE1.md
+06/04/2025  09:51 PM             6,089 PHASE2.md
+06/04/2025  09:51 PM             6,354 PHASE3.md
+06/04/2025  09:51 PM               753 pyproject.toml
+06/04/2025  09:51 PM             4,474 README.md
+05/05/2025  01:50 PM    <DIR>          reports
+06/04/2025  10:11 PM               332 requirements.txt
+06/04/2025  09:51 PM             2,889 requirements_dev.txt
+06/04/2025  09:51 PM                 0 requirements_tests.txt
+06/04/2025  10:06 PM    <DIR>          src
+06/04/2025  09:51 PM    <DIR>          tests
+              20 File(s)         41,699 bytes
+              18 Dir(s)  198,690,451,456 bytes free
