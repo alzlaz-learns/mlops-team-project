@@ -98,7 +98,7 @@
     - docker pull us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image:latest
     - docker pull us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest
 
-- [ ] **3.2 Custom Training Job on GCP**
+- [x] **3.2 Custom Training Job on GCP**
   - [ ] Vertex AI/Compute Engine job setup and documentation
   - [ ] Data storage in GCP bucket
 - [ ] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
@@ -111,14 +111,24 @@
   - [ ] Streamlit or Gradio app for model demonstration
   - [ ] Deployment on Hugging Face platform
   - [ ] Integration of UI deployment into GitHub Actions workflow
+  - [x] copy diabetes_predictor/models/model.joblib diabetes-predictor-ui/
   - [ ] Screenshots and usage examples
+      - ![image](https://github.com/user-attachments/assets/dfa0c176-6922-4beb-9aee-351b567de840)
+
 
 ## 4. Documentation & Repository Updates
-- [ ] **4.1 Comprehensive README**
-  - [ ] Setup, usage, and documentation for all CI/CD, CML, and deployment steps
-  - [ ] Screenshots and results of deployments
-- [ ] **4.2 Resource Cleanup Reminder**
-  - [ ] Checklist for removing GCP resources to avoid charges
+- [x] **4.1 Comprehensive README**
+  - [x] Setup, usage, and documentation for all CI/CD, CML, and deployment steps
+    -Markdown files created for: FastAPI Cloud Functions, Hugging Face UI Deployment, Vertex AI training jobs
+  - [x] Screenshots and results of deployments
+- [x] **4.2 Resource Cleanup Reminder**
+  - [x] Checklist for removing GCP resources to avoid charges
+    -Delete Vertex AI jobs
+    -Delete Artifact Registry repo
+    -Delete GCS buckets
+    -Disable billing (if applicable)
+
+
 
 ---
 
