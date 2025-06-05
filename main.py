@@ -1,1 +1,1 @@
-from src.predictor import app
+from src.predictor import app  # noqa: F401
