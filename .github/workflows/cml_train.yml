@@ -23,6 +23,8 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pip install --upgrade pip
+          pip install dvc[gs]
           pip install -r requirements.txt
 
           echo "Running model training..."
