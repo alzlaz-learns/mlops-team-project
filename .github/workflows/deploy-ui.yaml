@@ -3,9 +3,8 @@ name: Deploy Gradio App to Hugging Face
 
 on:
   push:
-    paths:
-      - phase3/cloud_functions/**
-  workflow_dispatch:
+    branches:
+        - phase3/cloud_functions
 
 jobs:
   deploy:
