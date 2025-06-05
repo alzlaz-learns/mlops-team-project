@@ -1,12 +1,12 @@
 # src/predictor.py
 import os
-from typing import Any, Dict
-
+from typing import Any, Dict, List
+from fastapi import FastAPI
+from pydantic import BaseModel
 import joblib
-from fastapi import FastAPI, Request
 
-# Load model from the correct path
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "../diabetes_predictor/models/model.joblib")
+# Load model
+MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../diabetes_predictor/models/model.joblib"))
 model = joblib.load(MODEL_PATH)
 
 app = FastAPI()
@@ -15,11 +15,10 @@ app = FastAPI()
 def health_check() -> Dict[str, str]:
     return {"status": "FastAPI running on Cloud Functions"}
 
+class FeaturesInput(BaseModel):
+    features: List[float]
+
 @app.post("/predict")
-async def predict(request: Request) -> Dict[str, Any]:
-    payload = await request.json()
-    features = payload.get("features")
-    if features is None:
-        return {"error": "Missing 'features' in request"}
-    prediction = model.predict([features])
+async def predict(data: FeaturesInput) -> Dict[str, Any]:
+    prediction = model.predict([data.features])
     return {"prediction": prediction.tolist()}

@@ -105,13 +105,52 @@
     - ![alt text](docs/screenshots/vertex_ai2.png)
   - [x] Data storage in GCP bucket
     ![alt text](images/gcp_bucket3.png)
-- [ ] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
-  - [ ] FastAPI app for model predictions
+
+    
+- [x] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
+  - [x] FastAPI app for model predictions
+    ![alt text](images/Cloud_run_function.png)
+    - powershell: Invoke-RestMethod -Uri "https://us-central1-diabetes-pred-461721.cloudfunctions.net/predictor-api/" -Method GET
+    - ![alt text](images/health_check.png)
+    - 
+    powershell: $body = @{
+        features = @(6, 148, 72, 35, 0, 33.6, 0.627, 50)
+    } | ConvertTo-Json -Compress
+    Invoke-RestMethod `
+        -Uri "https://us-central1-diabetes-pred-461721.cloudfunctions.net/predictor-api/predict" `
+        -Method Post `
+        -Body $body `
+        -ContentType "application/json"
+    - ![alt text](images/predict.png)
+  - [x] Deployment steps and API testing instructions
+    1. Created FastAPI app with model loading.
+    2. Wrapped with `TestClient` for synchronous requests in GCF.
+    3. Used `gcloud functions deploy` with:
+      - `--runtime python310`
+      - `--trigger-http`
+      - `--entry-point gcf_entry_point`
+    4. Deployed and tested endpoints via PowerShell.
+
+
+- [x] **3.4 Dockerize & Deploy Model with GCP Cloud Run**
+  - [x] Containerization and deployment steps
+  1. Created a Dockerfile in root
+  2. Built & Pushed the Docker Image to Google Container Registry
+  - gcloud builds submit --tag gcr.io/diabetes-pred-461721/fastapi-predictor .
+  3. Deployed to GCP Cloud Run
+  gcloud run deploy fastapi-predictor \
+  --image gcr.io/diabetes-pred-461721/fastapi-predictor \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --port 8080
+  - [x] Testing and result documentation
+  - health check
+  ![alt text](images/api_thing.png)
+  - test input
+  ![alt text](images/test_api2.png)
   
-  - [ ] Deployment steps and API testing instructions
-- [ ] **3.4 Dockerize & Deploy Model with GCP Cloud Run**
-  - [ ] Containerization and deployment steps
-  - [ ] Testing and result documentation
+
 - [ ] **3.5 Interactive UI Deployment**
   - [x] Streamlit or Gradio app for model demonstration
     -Gradio
@@ -119,7 +158,7 @@
     [interactive ui](docs/interactive_ui.md)
   - [ ] Integration of UI deployment into GitHub Actions workflow
   - [x] copy diabetes_predictor/models/model.joblib diabetes-predictor-ui/
-  - [ ] Screenshots and usage examples
+  - [x] Screenshots and usage examples
       - ![image](https://github.com/user-attachments/assets/dfa0c176-6922-4beb-9aee-351b567de840)
 
 
