@@ -6,7 +6,7 @@ on:
     branches:
       - phase3/cloud_functions
     paths:
-      - ./diabetes-predictor-ui/**
+      - './diabetes-predictor-ui/**'
   workflow_dispatch:
 jobs:
   deploy:

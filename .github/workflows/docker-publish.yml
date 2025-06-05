@@ -2,7 +2,8 @@ name: Build and Push Docker Images to Docker Hub
 
 on:
   push:
-    branches: [main]
+    branches: 
+      - '**'
   workflow_dispatch:
 
 jobs:
