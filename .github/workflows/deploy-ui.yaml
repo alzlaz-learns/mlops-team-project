@@ -1,0 +1,30 @@
+# .github/workflows/deploy-ui.yaml
+name: Deploy Gradio App to Hugging Face
+
+on:
+  push:
+    paths:
+      - diabetes-predictor-ui/**
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Push to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git clone --depth=1 https://huggingface.co/spaces/alzlaz/diabetes-predictor-ui space
+          cp -r diabetes-predictor-ui/* space/
+          cd space
+          git add .
+          git commit -m "Auto-deploy from GitHub Actions" || echo "No changes"
+          git push https://$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui HEAD:main
