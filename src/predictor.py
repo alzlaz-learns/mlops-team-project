@@ -4,7 +4,6 @@ import os
 import joblib
 from fastapi import FastAPI, Request
 
-
 # Load model from the correct path
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "../diabetes_predictor/models/model.joblib")
 model = joblib.load(MODEL_PATH)
