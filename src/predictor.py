@@ -1,5 +1,6 @@
 # src/predictor.py
 import os
+from typing import Any, Dict
 
 import joblib
 from fastapi import FastAPI, Request
@@ -11,11 +12,11 @@ model = joblib.load(MODEL_PATH)
 app = FastAPI()
 
 @app.get("/")
-def health_check():
+def health_check() -> Dict[str, str]:
     return {"status": "FastAPI running on Cloud Functions"}
 
 @app.post("/predict")
-async def predict(request: Request):
+async def predict(request: Request) -> Dict[str, Any]:
     payload = await request.json()
     features = payload.get("features")
     if features is None:

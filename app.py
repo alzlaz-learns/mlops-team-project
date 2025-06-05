@@ -5,7 +5,16 @@ import joblib
 model = joblib.load("model.joblib")  # we'll copy this into the same folder
 
 # Predict function
-def predict_diabetes(pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, dpf, age):
+def predict_diabetes(
+    pregnancies: float,
+    glucose: float,
+    blood_pressure: float,
+    skin_thickness: float,
+    insulin: float,
+    bmi: float,
+    dpf: float,
+    age: float
+) -> str:
     features = [[pregnancies, glucose, blood_pressure, skin_thickness, insulin, bmi, dpf, age]]
     prediction = model.predict(features)[0]
     return "Diabetic" if prediction == 1 else "Not Diabetic"
