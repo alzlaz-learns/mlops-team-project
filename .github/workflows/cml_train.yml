@@ -26,7 +26,7 @@ jobs:
           pip install -r requirements.txt
 
           echo "Running model training..."
-          python src/train_model.py > metrics.txt 2>&1
+          python -m diabetes_predictor.train_model > metrics.txt
 
           echo "## Model Training Metrics" > report.md
           cat metrics.txt >> report.md
