@@ -6,6 +6,7 @@ on:
     branches: 
       - '**'
   workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,16 +19,29 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-      - name: Push to Hugging Face Spaces
+      - name: Install Git LFS
+        run: |
+          sudo apt-get update
+          sudo apt-get install git-lfs
+          git lfs install
+
+      - name: Clone Hugging Face Space (full depth)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git clone --depth=1 https://huggingface.co/spaces/alzlaz/diabetes-predictor-ui space
+          git clone https://$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui space
+
+      - name: Copy UI files and push
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
           rsync -av --delete diabetes_predictor_ui/ space/
           cd space
           git add .
           git commit -m "Auto-deploy from GitHub Actions" || echo "No changes"
           git push --force https://alzlaz:$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui HEAD:main
+
+          
 
 
 
