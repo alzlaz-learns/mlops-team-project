@@ -29,10 +29,11 @@ jobs:
         run: |
           git lfs pull
 
-      - name: Clone Hugging Face Space (full depth)
+      - name: Clone Hugging Face Space 
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          rm -rf space
           git clone https://$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui space
 
       - name: Copy UI files and push
