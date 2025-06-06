@@ -25,6 +25,10 @@ jobs:
           sudo apt-get install git-lfs
           git lfs install
 
+      - name: Pull LFS files
+        run: |
+          git lfs pull
+
       - name: Clone Hugging Face Space (full depth)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
