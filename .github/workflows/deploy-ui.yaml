@@ -3,10 +3,8 @@ name: Deploy Gradio App to Hugging Face
 
 on:
   push:
-    branches:
-      - phase3/cloud_functions
-    paths:
-      - './diabetes-predictor-ui/**'
+    branches: 
+      - '**'
   workflow_dispatch:
 jobs:
   deploy:
