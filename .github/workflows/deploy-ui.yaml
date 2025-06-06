@@ -36,6 +36,7 @@ jobs:
       run: |
         cd space
         git init
+        git checkout -b main  
         git lfs install
         git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/$HF_USERNAME/$HF_SPACE_NAME
         git add .
