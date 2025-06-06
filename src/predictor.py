@@ -1,9 +1,10 @@
 # src/predictor.py
 import os
 from typing import Any, Dict, List
+
+import joblib
 from fastapi import FastAPI
 from pydantic import BaseModel
-import joblib
 
 # Load model
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../diabetes_predictor/models/model.joblib"))

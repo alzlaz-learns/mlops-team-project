@@ -106,7 +106,7 @@
   - [x] Data storage in GCP bucket
     ![alt text](images/gcp_bucket3.png)
 
-    
+
 - [x] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
   - [x] FastAPI app for model predictions
     ![alt text](images/Cloud_run_function.png)
@@ -156,19 +156,19 @@
     -Gradio
   - [x] Deployment on Hugging Face platform
     [interactive ui](docs/interactive_ui.md)
-  - [ ] Integration of UI deployment into GitHub Actions workflow
+  - [x] Integration of UI deployment into GitHub Actions workflow
   - [x] copy diabetes_predictor/models/model.joblib diabetes-predictor-ui/
   - [x] Screenshots and usage examples
       - ![image](https://github.com/user-attachments/assets/dfa0c176-6922-4beb-9aee-351b567de840)
-
-
+  - ![alt text](images/hugging_face.png)
+  
 ## 4. Documentation & Repository Updates
 - [x] **4.1 Comprehensive README**
   - [x] Setup, usage, and documentation for all CI/CD, CML, and deployment steps
     -Markdown files created for: FastAPI Cloud Functions, Hugging Face UI Deployment, Vertex AI training jobs
   - [x] Screenshots and results of deployments
 - [x] **4.2 Resource Cleanup Reminder**
-  - [x] Checklist for removing GCP resources to avoid charges
+  - [] Checklist for removing GCP resources to avoid charges
     -Delete Vertex AI jobs
     -Delete Artifact Registry repo
     -Delete GCS buckets
