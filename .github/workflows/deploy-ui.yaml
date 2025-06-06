@@ -37,6 +37,7 @@ jobs:
         run: |
           rsync -av --delete diabetes_predictor_ui/ space/
           cd space
+          git lfs install
           git add .
           git commit -m "Auto-deploy from GitHub Actions" || echo "No changes"
           git push --force https://alzlaz:$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui HEAD:main
