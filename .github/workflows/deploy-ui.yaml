@@ -3,7 +3,7 @@ name: Deploy to Hugging Face Spaces
 
 on:
   push:
-    branches: [ main, phase3/cloud_functions ]  # include your branch
+    branches: [ main ]  # include your branch
   workflow_dispatch:
 
 jobs:

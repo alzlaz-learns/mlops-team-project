@@ -77,7 +77,7 @@
   - [x] CML integration for automated model training on PRs
   - [x] Example CML outputs (metrics, visualizations)
     - Metrics
-  - [ ] Setup and usage documentation
+  - [x] Setup and usage documentation
     ![alt text](images/cml_output.png)
 ## 3. Deployment on Google Cloud Platform (GCP)
 - [x] **3.1 GCP Artifact Registry**
@@ -161,7 +161,7 @@
   - [x] Screenshots and usage examples
       - ![image](https://github.com/user-attachments/assets/dfa0c176-6922-4beb-9aee-351b567de840)
   - ![alt text](images/hugging_face.png)
-  
+
 ## 4. Documentation & Repository Updates
 - [x] **4.1 Comprehensive README**
   - [x] Setup, usage, and documentation for all CI/CD, CML, and deployment steps
