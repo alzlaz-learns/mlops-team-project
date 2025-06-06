@@ -27,7 +27,7 @@ jobs:
           cd space
           git add .
           git commit -m "Auto-deploy from GitHub Actions" || echo "No changes"
-          git push --force https://$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui HEAD:main
+          git push --force https://alzlaz:$HF_TOKEN@huggingface.co/spaces/alzlaz/diabetes-predictor-ui HEAD:main
 
 
 
