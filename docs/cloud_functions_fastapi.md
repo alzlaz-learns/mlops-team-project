@@ -9,15 +9,4 @@ This FastAPI app exposes a machine learning model as a REST API endpoint using G
 - `requirements.txt`: Project dependencies including FastAPI and GCP-specific tools
 
 ## Deployment Command (Gen 1)
-```bash
-gcloud functions deploy predictor-api \
-  --entry-point app \
-  --runtime python310 \
-  --trigger-http \
-  --allow-unauthenticated \
-  --source=. \
-  --region=us-central1 \
-  --no-gen2
-{
-  "features": [5.1, 3.5, 1.4, 0.2]
-}
+see phase3.md

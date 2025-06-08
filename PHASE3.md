@@ -73,11 +73,12 @@
       ![alt text](images/gcp_trigger.png)
       - Builds and pushes both images to GCP Artifact Registry:
       - Trigger is connected to GitHub repository via GCP Cloud Build Triggers
-- [ ] **2.2 Continuous Machine Learning (CML)**
-  - [ ] CML integration for automated model training on PRs
-  - [ ] Example CML outputs (metrics, visualizations)
-  - [ ] Setup and usage documentation
-
+- [x] **2.2 Continuous Machine Learning (CML)**
+  - [x] CML integration for automated model training on PRs
+  - [x] Example CML outputs (metrics, visualizations)
+    - Metrics
+  - [x] Setup and usage documentation
+    ![alt text](images/cml_output.png)
 ## 3. Deployment on Google Cloud Platform (GCP)
 - [x] **3.1 GCP Artifact Registry**
   - [x] Steps for creating and pushing Docker images to GCP
@@ -90,7 +91,7 @@
 
   - docker tag trainer-image us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image
   - docker push us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/trainer-image
-
+  ![alt text](docs/screenshots/Artifact_Screenshot.png)
   - Access gcp:
     - gcloud auth login
     - gcloud auth configure-docker us-central1-docker.pkg.dev
@@ -99,22 +100,67 @@
     - docker pull us-central1-docker.pkg.dev/diabetes-pred-461721/diabetes-pred/predictor-image:latest
 
 - [x] **3.2 Custom Training Job on GCP**
-  - [ ] Vertex AI/Compute Engine job setup and documentation
-  - [ ] Data storage in GCP bucket
-- [ ] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
-  - [ ] FastAPI app for model predictions
-  - [ ] Deployment steps and API testing instructions
-- [ ] **3.4 Dockerize & Deploy Model with GCP Cloud Run**
-  - [ ] Containerization and deployment steps
-  - [ ] Testing and result documentation
-- [ ] **3.5 Interactive UI Deployment**
-  - [ ] Streamlit or Gradio app for model demonstration
-  - [ ] Deployment on Hugging Face platform
-  - [ ] Integration of UI deployment into GitHub Actions workflow
-  - [x] copy diabetes_predictor/models/model.joblib diabetes-predictor-ui/
-  - [ ] Screenshots and usage examples
-      - ![image](https://github.com/user-attachments/assets/dfa0c176-6922-4beb-9aee-351b567de840)
+  - [x] Vertex AI/Compute Engine job setup and documentation
+    - ![alt text](docs/screenshots/vertex_ai.png)
+    - ![alt text](docs/screenshots/vertex_ai2.png)
+  - [x] Data storage in GCP bucket
+    ![alt text](images/gcp_bucket3.png)
 
+
+- [x] **3.3 Deploying API with FastAPI & GCP Cloud Functions**
+  - [x] FastAPI app for model predictions
+    ![alt text](images/Cloud_run_function.png)
+    - powershell: Invoke-RestMethod -Uri "https://us-central1-diabetes-pred-461721.cloudfunctions.net/predictor-api/" -Method GET
+    - ![alt text](images/health_check.png)
+    - 
+    powershell: $body = @{
+        features = @(6, 148, 72, 35, 0, 33.6, 0.627, 50)
+    } | ConvertTo-Json -Compress
+    Invoke-RestMethod `
+        -Uri "https://us-central1-diabetes-pred-461721.cloudfunctions.net/predictor-api/predict" `
+        -Method Post `
+        -Body $body `
+        -ContentType "application/json"
+    - ![alt text](images/predict.png)
+  - [x] Deployment steps and API testing instructions
+    1. Created FastAPI app with model loading.
+    2. Wrapped with `TestClient` for synchronous requests in GCF.
+    3. Used `gcloud functions deploy` with:
+      - `--runtime python310`
+      - `--trigger-http`
+      - `--entry-point gcf_entry_point`
+    4. Deployed and tested endpoints via PowerShell.
+
+
+- [x] **3.4 Dockerize & Deploy Model with GCP Cloud Run**
+  - [x] Containerization and deployment steps
+  1. Created a Dockerfile in root
+  2. Built & Pushed the Docker Image to Google Container Registry
+  - gcloud builds submit --tag gcr.io/diabetes-pred-461721/fastapi-predictor .
+  3. Deployed to GCP Cloud Run
+  gcloud run deploy fastapi-predictor \
+  --image gcr.io/diabetes-pred-461721/fastapi-predictor \
+  --platform managed \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --port 8080
+  - [x] Testing and result documentation
+  - health check
+  ![alt text](images/api_thing.png)
+  - test input
+  ![alt text](images/test_api2.png)
+  
+
+- [ ] **3.5 Interactive UI Deployment**
+  - [x] Streamlit or Gradio app for model demonstration
+    -Gradio
+  - [x] Deployment on Hugging Face platform
+    [interactive ui](docs/interactive_ui.md)
+  - [x] Integration of UI deployment into GitHub Actions workflow
+  - [x] copy diabetes_predictor/models/model.joblib diabetes-predictor-ui/
+  - [x] Screenshots and usage examples
+      - ![image](https://github.com/user-attachments/assets/dfa0c176-6922-4beb-9aee-351b567de840)
+  - ![alt text](images/hugging_face.png)
 
 ## 4. Documentation & Repository Updates
 - [x] **4.1 Comprehensive README**
@@ -122,7 +168,7 @@
     -Markdown files created for: FastAPI Cloud Functions, Hugging Face UI Deployment, Vertex AI training jobs
   - [x] Screenshots and results of deployments
 - [x] **4.2 Resource Cleanup Reminder**
-  - [x] Checklist for removing GCP resources to avoid charges
+  - [] Checklist for removing GCP resources to avoid charges
     -Delete Vertex AI jobs
     -Delete Artifact Registry repo
     -Delete GCS buckets

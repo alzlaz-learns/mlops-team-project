@@ -1,0 +1,54 @@
+# .github/workflows/deploy-ui.yml
+name: Deploy to Hugging Face Spaces
+
+on:
+  push:
+    branches: [ main ]  # include your branch
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Gradio UI to Hugging Face
+    
+    steps:
+    - name: Checkout code with LFS
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+        fetch-depth: 0
+
+    - name: Set up Git
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+
+    - name: Copy UI files to space directory
+      run: |
+        mkdir -p space
+        rsync -av --delete diabetes_predictor_ui/ space/
+
+    - name: Push to Hugging Face Space
+      env:
+        HF_USERNAME: ${{ secrets.HF_USERNAME }}
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        HF_SPACE_NAME: ${{ secrets.HF_SPACE_NAME }}
+      run: |
+        cd space
+        git init
+        git checkout -b main  
+        git lfs install
+        git remote add origin https://$HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/$HF_USERNAME/$HF_SPACE_NAME
+        git add .
+        git commit -m "Deploy Gradio UI from GitHub Actions"
+        git push origin main --force
+
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ ${{ job.status }} == 'success' ]; then
+          echo "✅ Deployment successful!"
+          echo "🌐 https://huggingface.co/spaces/${{ secrets.HF_USERNAME }}/${{ secrets.HF_SPACE_NAME }}"
+        else
+          echo "❌ Deployment failed!"
+        fi
