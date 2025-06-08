@@ -15,12 +15,12 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
 - Automate the data ingestion, preprocessing, training, evaluation steps in a reproducible
 
 ## 3. Project Architecture Diagram
-- [ ] Insert or link to your architecture diagram (e.g., draw.io, PNG, etc.)
+- [x] Insert or link to your architecture diagram (e.g., draw.io, PNG, etc.)
 ![alt text](images/arc.drawio.png)
 ## 4. Phase Deliverables
 - [x] [PHASE1.md](./PHASE1.md): Project Design & Model Development
 - [x] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
-- [ ] [PHASE3.md](./PHASE3.md): Continuous ML & Deployment
+- [x] [PHASE3.md](./PHASE3.md): Continuous ML & Deployment
 
 ## 5. Setup Instructions
 - [x] How to set up the environment (conda/pip, requirements.txt, Docker, etc.)
@@ -63,9 +63,9 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
         or in config.yanl can change debug: false -> debug: true
 ## 6. Contribution Summary
 - [x] Briefly describe each team member's contributions
-    *    Annie: Writing portion of README/Phase1.md, profiling & logging
+    *    Annie: Writing portion of README/Phase1.md, profiling & logging, unit tests, github actions, hooks
     *    Aleksa: Researching model, writing code for implementing model, debugging
-    *    Alex: Github project setup monitoring & tracking & docker integration.
+    *    Alex: Github project setup, monitoring & tracking & docker integration.
 
 ## 7. References
 - [x] List of datasets, frameworks, and major third-party tools used
