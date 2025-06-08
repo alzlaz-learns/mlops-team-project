@@ -16,7 +16,7 @@ Type 2 diabetes affects millions of adults worldwide and can lead to many severe
 
 ## 3. Project Architecture Diagram
 - [ ] Insert or link to your architecture diagram (e.g., draw.io, PNG, etc.)
-
+![alt text](images/arc.drawio.png)
 ## 4. Phase Deliverables
 - [x] [PHASE1.md](./PHASE1.md): Project Design & Model Development
 - [x] [PHASE2.md](./PHASE2.md): Enhancing ML Operations
